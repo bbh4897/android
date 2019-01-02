@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">testSearchV2</string>
+    <string-array name="array">
+        <item>"Ali"</item>
+        <item>"Veli"</item>
+        <item>"Ahmet"</item>
+        <item>"Mehmet"</item>
+    </string-array>
+</resources>

@@ -40,22 +40,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        try {
-            Log.d( "deneme","----------->"+listItems);
-            listItems.addAll(t.execute().get());
-            Log.d( "deneme","----------->"+listItems);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        adapter = new myAdapter(this, listItems.get(listItems.size() - 1),listItems);
-        recyclerView.setAdapter(adapter);
 
         /////////////////////////////////////////////// SearchView
 
-        searchView = (SearchView)findViewById(R.id.searchView);
+        searchItem();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -71,6 +60,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void searchItem(){
+
+        searchView = (SearchView)findViewById(R.id.searchView);
+
+        try {
+            Log.d( "bos","----------->"+listItems);
+            listItems.addAll(t.execute().get());
+            Log.d( "activty","----------->"+listItems);
+
+            adapter = new myAdapter(this, listItems.get(listItems.size() - 1),listItems);
+            recyclerView.setAdapter(adapter);
+            
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
     public class test extends AsyncTask<String, Object, List<ListItem>> {
 
 
@@ -95,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             list.add(
                     new ListItem("gggeeeeee","acıklama3"));
 
-            Log.d( "dgfdgfd","----------->"+list);
+            Log.d( "test","----------->"+list);
             return list;
         }
     }

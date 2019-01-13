@@ -21,14 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
-        android:text="Head"/>
+        android:background="@android:color/holo_red_dark"
+        android:text="Head" />
 
     <TextView
         android:id="@+id/textDesc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginBottom="7dp"
-        android:text="Description"/>
+        android:background="@android:color/holo_green_dark"
+        android:text="Description" />
 
 
 

@@ -33,7 +33,9 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
         this.context = context;
         this.header = header;
         this.listItems = listItems;
+        /////////
         listItemFull = new ArrayList<>(listItems);
+    ////////////////
     }
 
 
@@ -57,8 +59,6 @@ public class myAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> imp
         myAdapter.ViewHolder vItem = (myAdapter.ViewHolder) holder;
         ((ViewHolder) holder).textViewHead.setText("Başlık : " + listItem.getHead());
         ((ViewHolder) holder).textViewDesc.setText("Açıklama : " + listItem.getDesc());
-
-
 
     }
 

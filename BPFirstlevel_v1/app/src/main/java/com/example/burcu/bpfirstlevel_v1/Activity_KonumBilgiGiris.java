@@ -7,12 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Activity_KonumBilgiGiris extends AppCompatActivity {
 
     EditText editText;
     Button btn;
+    ImageView imImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
         setContentView(R.layout.activity__konum_bilgi_giris);
 
         editText = (EditText)findViewById(R.id.editText);
-
+        imImageView = (ImageView)findViewById(R.id.imageView);
         btn = (Button)findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

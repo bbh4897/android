@@ -14,13 +14,13 @@ public class test extends AsyncTask<String, String, ArrayList<String>> {
         list.add("jkljl");
         list.add("nnnnn");
         list.add("nnnnn");
-        list.add("nnnnn");
+        list.add("aaaaa");
         list.add("nnnnn");
         list.add("nnnnn");
         list.add("nnnnn");
         list.add("oooo");
 
-        System.out.println("aaaaa : " + list);
+        System.out.println("Liste : " + list);
         return list;
     }
 }

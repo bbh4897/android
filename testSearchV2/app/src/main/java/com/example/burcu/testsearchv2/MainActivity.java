@@ -39,24 +39,24 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_search, menu);
-        MenuItem item = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView)item.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu_search, menu);
+            MenuItem item = menu.findItem(R.id.search);
+            SearchView searchView = (SearchView)item.getActionView();
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
+                @Override
+                public boolean onQueryTextChange(String newText) {
 
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
+                    adapter.getFilter().filter(newText);
+                    return false;
+                }
+            });
 
-        return super.onCreateOptionsMenu(menu);
+            return super.onCreateOptionsMenu(menu);
     }
 }

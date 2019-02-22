@@ -21,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private WifiManager wifiManager;
     private ListView listView;
-    private Button scanButton;
-    private int size = 0;
+    private Button btn;
     private List<ScanResult> results;
     private ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter adapter;
@@ -33,33 +32,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        scanButton = findViewById(R.id._scanButton);
-        scanButton.setOnClickListener(new View.OnClickListener() {
+        btn = findViewById(R.id.btn_scan);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                scanWifi();
+                    scanWifi();
             }
         });
 
-        listView = findViewById(R.id._listView);
-        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        listView = findViewById(R.id.listView);
+        wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        if (!wifiManager.isWifiEnabled()) {
-            Toast.makeText(this, "Wifi is disabled.. We need to enable it", Toast.LENGTH_LONG).show();
+        if(!wifiManager.isWifiEnabled()){
+            Toast.makeText(this,"wifiye baglan",Toast.LENGTH_LONG).show();
             wifiManager.setWifiEnabled(true);
         }
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(adapter);
         scanWifi();
-
     }
 
     private void scanWifi(){
-        arrayList.Clear();
-        registerReceiver(wifiReceiver, new IntentFilter(wifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        arrayList.clear();
+        registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
         wifiManager.startScan();
-        Toast.makeText(this, "Scanning Wifi..", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Wifi Erişim Noktaları Listeleniyor", Toast.LENGTH_LONG).show();
     }
 
     BroadcastReceiver wifiReceiver = new BroadcastReceiver() {
@@ -69,9 +67,11 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(this);
 
             for(ScanResult scanResult : results){
-                arrayList.add(scanResult.SSID + " - " + scanResult.capabilities);
+                arrayList.add(scanResult.SSID + " - " + scanResult.BSSID + " ** " + scanResult.level + " - " + scanResult.frequency);
                 adapter.notifyDataSetChanged();
             }
+
+
         }
     };
 }

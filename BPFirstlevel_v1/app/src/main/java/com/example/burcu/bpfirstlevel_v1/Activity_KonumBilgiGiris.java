@@ -45,6 +45,9 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
 //                            .setAction("Action", null).show();
 //                }
 
+                Veritabani db = new Veritabani(Activity_KonumBilgiGiris.this);
+                db.Ekle(editText.getText().toString());
+
             }
         });
 

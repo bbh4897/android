@@ -1,25 +1,41 @@
 package com.example.burcu.bpfirstlevel_v1;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class Activity_KonumBilgiGiris extends AppCompatActivity {
 
     EditText editText;
     Button btn;
     ImageView imImageView;
-    private static final int PICK_IMAGE = 100;
-    Uri imageUri;
+    final int REQUEST_CODE_GALLERY = 999;
 
 
     @Override
@@ -32,42 +48,63 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
         btn = (Button)findViewById(R.id.button);
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-//                if(editText.getText().toString().equals("aaas")){
-//                    Snackbar.make(v, "sadasdasd", Snackbar.LENGTH_LONG)
-//                       .setAction("Action", null).show();
-//                }
-//                else{
-//                    Snackbar.make(v, "ssss", Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
-//                }
-
-                Veritabani db = new Veritabani(Activity_KonumBilgiGiris.this);
-                db.Ekle(editText.getText().toString());
-
-            }
-        });
-
         imImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent img_intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(img_intent, PICK_IMAGE);
+                ActivityCompat.requestPermissions(Activity_KonumBilgiGiris.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},REQUEST_CODE_GALLERY);
+
             }
         });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+
+
+
+        });
+
 
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode== RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-            imImageView.setImageURI(imageUri);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_CODE_GALLERY){
+            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, REQUEST_CODE_GALLERY);
+            }
+            else {
+                Log.i("burcuuuuuu" , "erısım ıznı yok");
+
+            }
+            return;
+
         }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK){
+            Uri imageUri = data.getData();
+            CropImage.activity(imageUri).setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1,1).start(this);
+        }
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if(resultCode == RESULT_OK){
+                Uri resultUri = result.getUri();
+                imImageView.setImageURI(resultUri);
+            }
+            else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+                Exception error = result.getError();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

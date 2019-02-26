@@ -32,23 +32,23 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView)findViewById(R.id.list_view);
 
-        Veritabani db = new Veritabani(MainActivity.this);
-        List<String> vList = db.listele();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1,vList);
-        listView.setAdapter(adapter);
-
-        btn2 = (Button)findViewById(R.id.button2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Veritabani db = new Veritabani(MainActivity.this);
-                List<String> vList = db.listele();
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1,vList);
-                listView.setAdapter(adapter);
-
-            }
-        });
-
+//        Veritabani db = new Veritabani(MainActivity.this);
+//        List<String> vList = db.listele();
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1,vList);
+//        listView.setAdapter(adapter);
+//
+//        btn2 = (Button)findViewById(R.id.button2);
+//        btn2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Veritabani db = new Veritabani(MainActivity.this);
+//                List<String> vList = db.listele();
+//                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1,vList);
+//                listView.setAdapter(adapter);
+//
+//            }
+//        });
+//
 
 //        ***************************************************************************************************************
 //        fLOATING ACTION BAR KISMINA TIKLANILDIGINDA NELER OLACAGI

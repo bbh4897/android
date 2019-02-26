@@ -33,7 +33,7 @@ import java.io.InputStream;
 public class Activity_KonumBilgiGiris extends AppCompatActivity {
 
     EditText editText;
-    Button btn;
+    Button btn, btn3;
     ImageView imImageView;
     final int REQUEST_CODE_GALLERY = 999;
 
@@ -47,8 +47,9 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
         editText = (EditText)findViewById(R.id.editText);
         imImageView = (ImageView)findViewById(R.id.imageView);
         btn = (Button)findViewById(R.id.button);
+        btn3 = (Button)findViewById(R.id.button3);
 
-        veritabani = new Veritabani(this, "BP_DB.sqlite", null, 1 );
+        veritabani = new Veritabani(this, "BPdb.sqlite", null, 1 );
         veritabani.queryData("CREATE TABLE IF NOT EXISTS KONUM_BILGILERI(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, image BLOB)");
 
         imImageView.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +73,14 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Activity_KonumBilgiGiris.this, RecordList.class));
             }
         });
     }

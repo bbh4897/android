@@ -68,7 +68,7 @@ public class Veritabani extends SQLiteOpenHelper {
     }
 
     public Cursor getData(String sql){
-        SQLiteDatabase database = getWritableDatabase();
+        SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql, null);
     }
 

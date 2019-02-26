@@ -1,6 +1,7 @@
 package com.example.burcu.bpfirstlevel_v1;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,15 +12,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
     Button btn2;
+
+    ArrayList<Model> arrayList;
+    KonumListAdapter adapter = null;
+
+    ImageView imgIcon;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);//        TOOLBAR OLARAK NITELENDIRILEN SEY, AYARLAR KISMI.
         setSupportActionBar(toolbar); //   ACTION BAR'A TOOLBAR EKLEMESI YAPILDI
 
-        listView = (ListView)findViewById(R.id.list_view);
+       
 
 //        Veritabani db = new Veritabani(MainActivity.this);
 //        List<String> vList = db.listele();

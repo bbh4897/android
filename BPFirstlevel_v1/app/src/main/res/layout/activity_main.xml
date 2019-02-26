@@ -29,7 +29,9 @@
     <!--********************************************************************************************************************-->
     <!--CONTENT KISMI, İNCLUDE EDILDI-->
 
-    <include layout="@layout/content_main" />
+    <include
+        layout="@layout/content_main"
+        android:layout_height="377dp" />
 
 
 

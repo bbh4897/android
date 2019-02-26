@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
+    Button btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,19 @@ public class MainActivity extends AppCompatActivity {
         List<String> vList = db.listele();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1,vList);
         listView.setAdapter(adapter);
+
+        btn2 = (Button)findViewById(R.id.button2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Veritabani db = new Veritabani(MainActivity.this);
+                List<String> vList = db.listele();
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1,vList);
+                listView.setAdapter(adapter);
+
+            }
+        });
+
 
 //        ***************************************************************************************************************
 //        fLOATING ACTION BAR KISMINA TIKLANILDIGINDA NELER OLACAGI

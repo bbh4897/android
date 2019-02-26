@@ -37,6 +37,7 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
     ImageView imImageView;
     final int REQUEST_CODE_GALLERY = 999;
 
+    public static Veritabani veritabani;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
         imImageView = (ImageView)findViewById(R.id.imageView);
         btn = (Button)findViewById(R.id.button);
 
+        veritabani = new Veritabani(this, "BP_DB.sqlite", null, 1 );
+        veritabani.queryData("CREATE TABLE IF NOT EXISTS KONUM_BILGILERI(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, image BLOB)");
 
         imImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,13 +64,25 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                try {
+                    veritabani.insertData(editText.getText().toString().trim(), imageViewToByte(imImageView));
+                    Snackbar.make(v, "Veri Eklendi", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    editText.setText("");
+                   // imImageView.setImageResources(R.drawable.imageview_background);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-
-
-
         });
+    }
 
+    public static byte[] imageViewToByte(ImageView imImageView) {
+
+        Bitmap bitmap = ((BitmapDrawable)imImageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
 
     }
 

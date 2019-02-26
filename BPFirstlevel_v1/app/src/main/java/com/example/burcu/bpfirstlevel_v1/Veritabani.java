@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,46 +15,72 @@ import java.util.List;
 
 public class Veritabani extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "db_bp";
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE = "konum_bilgileri";
+
+    public Veritabani(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
 
 
+    public void queryData(String sql){
 
-    public Veritabani(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+    }
+
+    public void insertData(String name, byte[] image){
+
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO KONUM_BILGILERI VALUES(NULL, ?, ?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, name);
+        statement.bindBlob(2, image);
+
+        statement.executeInsert();
+
+    }
+
+    public void updateData(String name, byte[] image, int id){
+
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "UPDATE KONUM_BILGILERI SET name=?, image=? WHERE id=?";
+        SQLiteStatement statement = database.compileStatement(sql);
+
+        statement.bindString(1, name);
+        statement.bindBlob(2, image);
+        statement.bindDouble(3,(double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public void deleteData(int id){
+
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "DELETE FROM KONUM_BILGILERI WHERE id=?";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1,(double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public Cursor getData(String sql){
+        SQLiteDatabase database = getWritableDatabase();
+        return database.rawQuery(sql, null);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, newimage blob)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXİSTS " + TABLE);
-        onCreate(db);
+
     }
 
-    public boolean addData(String name, byte[] img){
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("newimage", img);
-        long result = db.insert(TABLE, null, contentValues);
-        if(result==-1){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
-    public Cursor getData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "Select * from " + TABLE;
-        Cursor data = db.rawQuery(query,null);
-        return data;
-    }
 }

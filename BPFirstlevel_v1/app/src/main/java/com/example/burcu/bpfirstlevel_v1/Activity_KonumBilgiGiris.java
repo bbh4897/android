@@ -38,6 +38,7 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
     final int REQUEST_CODE_GALLERY = 999;
 
     public static Veritabani veritabani;
+    public static KonumListAdapter a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
         btn = (Button)findViewById(R.id.button);
         btn3 = (Button)findViewById(R.id.button3);
 
-        veritabani = new Veritabani(this, "BPdb.sqlite", null, 1 );
+        veritabani = new Veritabani(this, "BPdb444.sqlite", null, 1 );
         veritabani.queryData("CREATE TABLE IF NOT EXISTS KONUM_BILGILERI(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, image BLOB)");
 
         imImageView.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,7 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
+
                     veritabani.insertData(editText.getText().toString().trim(), imageViewToByte(imImageView));
                     Snackbar.make(v, "Veri Eklendi", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                     editText.setText("");

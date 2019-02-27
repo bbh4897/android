@@ -21,13 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
-    Button btn2;
 
-    ArrayList<Model> arrayList;
-    KonumListAdapter adapter = null;
-
-    ImageView imgIcon;
 
 
     @Override
@@ -39,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);//        TOOLBAR OLARAK NITELENDIRILEN SEY, AYARLAR KISMI.
         setSupportActionBar(toolbar); //   ACTION BAR'A TOOLBAR EKLEMESI YAPILDI
 
-       
+
 
 //        Veritabani db = new Veritabani(MainActivity.this);
 //        List<String> vList = db.listele();

@@ -30,7 +30,7 @@ public class Veritabani extends SQLiteOpenHelper {
     public void insertData(String name, byte[] image){
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO KONUM_BILGILERI VALUES(NULL, ?, ?)";
+        String sql = "INSERT INTO KONUMBILGILERI VALUES(NULL, ?, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, name);
@@ -43,7 +43,7 @@ public class Veritabani extends SQLiteOpenHelper {
     public void updateData(String name, byte[] image, int id){
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE KONUM_BILGILERI SET name=?, image=? WHERE id=?";
+        String sql = "UPDATE KONUMBILGILERI SET name=?, image=? WHERE id=?";
         SQLiteStatement statement = database.compileStatement(sql);
 
         statement.bindString(1, name);
@@ -57,7 +57,7 @@ public class Veritabani extends SQLiteOpenHelper {
     public void deleteData(int id){
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "DELETE FROM KONUM_BILGILERI WHERE id=?";
+        String sql = "DELETE FROM KONUMBILGILERI WHERE id=?";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();

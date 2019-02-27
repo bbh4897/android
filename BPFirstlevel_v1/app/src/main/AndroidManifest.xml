@@ -26,7 +26,8 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".RecordList"></activity>
+        <activity android:name=".RecordList"
+            android:parentActivityName=".Activity_KonumBilgiGiris"></activity>
     </application>
 
 </manifest>

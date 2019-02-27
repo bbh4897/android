@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -45,13 +46,16 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__konum_bilgi_giris);
 
+        ActionBar actionBar  =getSupportActionBar();
+        actionBar.setTitle("Yeni Kayıt");
+
         editText = (EditText)findViewById(R.id.editText);
         imImageView = (ImageView)findViewById(R.id.imageView);
         btn = (Button)findViewById(R.id.button);
         btn3 = (Button)findViewById(R.id.button3);
 
-        veritabani = new Veritabani(this, "BPdb444.sqlite", null, 1 );
-        veritabani.queryData("CREATE TABLE IF NOT EXISTS KONUM_BILGILERI(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, image BLOB)");
+        veritabani = new Veritabani(this, "BProjedb.sqlite", null, 1 );
+        veritabani.queryData("CREATE TABLE IF NOT EXISTS KONUMBILGILERI(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, image BLOB)");
 
         imImageView.setOnClickListener(new View.OnClickListener() {
             @Override

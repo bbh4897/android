@@ -1,6 +1,8 @@
 package com.example.burcu.bpfirstlevel_v1;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
     ImageView imgIcon2;
     TextView txtName2;
     String s_name;
+    Bitmap bmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,11 @@ public class ActivityKonumDetay extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent!=null){
             s_name = intent.getStringExtra("name");
+            byte[] bytes = getIntent().getByteArrayExtra("image");
+            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         }
 
         txtName2.setText(s_name);
+        imgIcon2.setImageBitmap(bmp);
     }
 }

@@ -41,6 +41,7 @@ public class RecordList extends AppCompatActivity {
     Model model;
 
     ImageView imgIcon;
+    byte[] img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +75,13 @@ public class RecordList extends AppCompatActivity {
                 Intent intent  =new Intent(RecordList.this, ActivityKonumDetay.class);
                 intent.putExtra("id",model.getId());
                 intent.putExtra("name",model.getName());
-                intent.putExtra("iamge", model.getImage());
+
+                img = model.getImage();
+//                Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+//                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                byte[] byteArray = stream.toByteArray();
+                intent.putExtra("image", img);
 
                 startActivity(intent);
 

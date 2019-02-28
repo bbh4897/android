@@ -38,6 +38,7 @@ public class RecordList extends AppCompatActivity {
 
     ArrayList<Model> mList;
     KonumListAdapter adapter = null;
+    Model model;
 
     ImageView imgIcon;
     @Override
@@ -64,6 +65,21 @@ public class RecordList extends AppCompatActivity {
             mList.add(new Model(id, name, image));
         }
         adapter.notifyDataSetChanged();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                model = (Model) adapter.getItem(position);
+                Intent intent  =new Intent(RecordList.this, ActivityKonumDetay.class);
+                intent.putExtra("id",model.getId());
+                intent.putExtra("name",model.getName());
+                intent.putExtra("iamge", model.getImage());
+
+                startActivity(intent);
+
+            }
+        });
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

@@ -12,7 +12,6 @@ import android.widget.TextView;
 public class ActivityKonumDetay extends AppCompatActivity {
 
     ImageView imgIcon2;
-    TextView txtName2;
     String s_name;
     Bitmap bmp;
 
@@ -22,10 +21,9 @@ public class ActivityKonumDetay extends AppCompatActivity {
         setContentView(R.layout.activity_konum_detay);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Konum Detay");
+
 
         imgIcon2 = (ImageView)findViewById(R.id.imgIcon2);
-        txtName2 = (TextView)findViewById(R.id.txtName2);
 
         Intent intent = getIntent();
         if(intent!=null){
@@ -34,7 +32,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
             bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         }
 
-        txtName2.setText(s_name);
+        actionBar.setTitle("Konum: " + s_name);
         imgIcon2.setImageBitmap(bmp);
     }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,9 @@ public class ActivityWifiListe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_liste);
+
+        ActionBar actionBar  =getSupportActionBar();
+        actionBar.setTitle("Wifi İzleri");
 
         btn = findViewById(R.id.btn_wifiscan);
         btn.setOnClickListener(new View.OnClickListener() {

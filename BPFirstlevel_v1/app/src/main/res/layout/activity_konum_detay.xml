@@ -4,45 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
+    android:gravity="center_vertical|center"
     android:orientation="vertical"
     tools:context=".ActivityKonumDetay">
 
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imgIcon2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
-        android:orientation="horizontal">
+        android:layout_height="340dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/ic_launcher" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="8dp"
-            android:text="cvxcvfdgfd"
-            android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/btn_wifiScan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="155dp"
-            android:text="Wifi Listesi" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/wifiListesi"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imgIcon2"
-            android:layout_width="match_parent"
-            android:layout_height="340dp"
-            android:layout_marginTop="30dp"
-            android:src="@mipmap/ic_launcher" />
-    </LinearLayout>
+        android:layout_marginTop="10dp"
+        android:text="Wifi Listesi" />
 
 </LinearLayout>

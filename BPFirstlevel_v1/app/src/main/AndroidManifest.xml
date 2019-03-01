@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -29,8 +33,10 @@
         <activity
             android:name=".RecordList"
             android:parentActivityName=".Activity_KonumBilgiGiris" />
-        <activity android:name=".ActivityKonumDetay"
+        <activity
+            android:name=".ActivityKonumDetay"
             android:parentActivityName=".RecordList" />
+        <activity android:name=".ActivityWifiListe"></activity>
     </application>
 
 </manifest>

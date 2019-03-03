@@ -54,7 +54,7 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
         btn = (Button)findViewById(R.id.button);
         btn3 = (Button)findViewById(R.id.button3);
 
-        veritabani = new Veritabani(this, "BProje2db.sqlite", null, 1 );
+        veritabani = new Veritabani(this, "BitirmeProjesidb.sqlite", null, 1 );
         veritabani.queryData("CREATE TABLE IF NOT EXISTS KONUMBILGILERI(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, image BLOB)");
 
         imImageView.setOnClickListener(new View.OnClickListener() {

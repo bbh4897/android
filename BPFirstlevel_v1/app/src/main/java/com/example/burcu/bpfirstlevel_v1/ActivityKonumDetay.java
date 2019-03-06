@@ -3,11 +3,6 @@ package com.example.burcu.bpfirstlevel_v1;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.content.res.ColorStateList;
-
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,14 +56,10 @@ public class ActivityKonumDetay extends AppCompatActivity {
     public void btnIzgara(View view){
 
         Button b = (Button)view;
+           b.setBackgroundColor(b.getContext().getResources().getColor(R.color.transparan));
 
-
-            b.setBackgroundColor(b.getContext().getResources().getColor(R.color.transparan));
-
-
-//        b.setBackgroundColor(Color.parseColor("#1f5013"));
-//        String buttonText = b.getText().toString();
-//        Toast.makeText(ActivityKonumDetay.this, buttonText, Toast.LENGTH_LONG).show();
+           Intent i = new Intent(ActivityKonumDetay.this, ActivityWifiLevel.class);
+           startActivity(i);
     }
 
 }

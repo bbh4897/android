@@ -102,7 +102,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn11"
@@ -159,7 +159,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
 
         <Button
@@ -167,7 +167,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn20"
@@ -181,7 +181,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn22"
@@ -209,7 +209,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn26"
@@ -230,7 +230,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn29"
@@ -251,7 +251,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg"/>
+            android:background="@drawable/my_button_bg" />
 
         <Button
             android:id="@+id/btn32"
@@ -279,14 +279,14 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn36"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
 
         <Button
@@ -294,7 +294,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn38"
@@ -322,7 +322,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn42"
@@ -337,7 +337,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
         <Button
             android:id="@+id/btn44"
@@ -372,7 +372,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="btnIzgara"
-            android:background="@drawable/my_button_bg" />
+            android:background="@drawable/my_button_bg"/>
 
 
         <Button

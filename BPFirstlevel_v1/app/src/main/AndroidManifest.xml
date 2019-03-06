@@ -36,7 +36,8 @@
         <activity
             android:name=".ActivityKonumDetay"
             android:parentActivityName=".RecordList" />
-        <activity android:name=".ActivityWifiListe"></activity>
+        <activity android:name=".ActivityWifiListe" />
+        <activity android:name=".ActivityWifiLevel"></activity>
     </application>
 
 </manifest>

@@ -109,7 +109,9 @@ public class ActivityWifiLevel extends AppCompatActivity {
                         }
 
                         Snackbar.make(v, "Wifi Bilgileri Eklendi.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                        startActivity(new Intent(ActivityWifiLevel.this, WLevelList.class));
+                        Intent intent_levet = new Intent(ActivityWifiLevel.this, WLevelList.class);
+                        intent_levet.putExtra("ButtonId2", BUTTONID);
+                        startActivity(intent_levet);
                     }catch (Exception e) {
                         e.printStackTrace();
                     }

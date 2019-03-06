@@ -16,7 +16,7 @@ public class WLevelList extends AppCompatActivity {
 
     ArrayList<Model2> mList;
     WLevelListAdapter adapter = null;
-
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,9 @@ public class WLevelList extends AppCompatActivity {
 
 
 
-        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE2131230783");
+        extras = getIntent().getExtras();
+        String BUTTONID = extras.getString("ButtonId2");
+        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE" + BUTTONID);
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);

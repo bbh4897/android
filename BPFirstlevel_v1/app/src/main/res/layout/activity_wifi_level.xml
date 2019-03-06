@@ -11,15 +11,32 @@
     <ListView
         android:id="@+id/listViewWifi"
         android:layout_width="match_parent"
-        android:layout_height="312dp"
+        android:layout_height="329dp"
         android:layout_weight="0.97" />
 
-    <Button
-        android:id="@+id/btn_wifiscan"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:layout_margin="15dp"
-        android:text="Yenile" />
+        android:layout_height="138dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_wifiscan"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="15dp"
+            android:text="Yenile" />
+
+
+        <Button
+            android:id="@+id/btn_wifilevel"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="15dp"
+            android:text="Kaydet" />
+
+    </LinearLayout>
 
 </LinearLayout>

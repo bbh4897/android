@@ -82,5 +82,20 @@ public class Veritabani extends SQLiteOpenHelper {
 
     }
 
+    ///////////////////////////////////////////////////
+
+    public void insertWLevel(String level){
+
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO WLBILGILERI VALUES(NULL, ?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1, level);
+
+        statement.executeInsert();
+
+    }
+
+
 
 }

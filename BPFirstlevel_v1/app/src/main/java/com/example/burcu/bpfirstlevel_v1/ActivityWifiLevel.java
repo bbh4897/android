@@ -44,7 +44,6 @@ public class ActivityWifiLevel extends AppCompatActivity {
         btn2 = findViewById(R.id.btn_wifilevel);
 
         veritabani = new Veritabani(this, "BitirmeProjesidb.sqlite", null, 1 );
-        veritabani.queryData("CREATE TABLE IF NOT EXISTS WLBILGILERI(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHARB)");
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -98,14 +97,17 @@ public class ActivityWifiLevel extends AppCompatActivity {
                     try {
 
                         extras = getIntent().getExtras();
-                        String b_id = extras.getString("ButtonId");
-                        for (int i = 0; i < arrayList.size(); i++) {
-                            veritabani.insertWLevel(arrayList.get(i));
+                        String BUTTONID = extras.getString("ButtonId");
+                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHARB)");
 
-                            Log.i("hkjh" , arrayList.get(i) + " " + b_id);
+                        for (int i = 0; i < arrayList.size(); i++) {
+                            veritabani.insertWLevel(arrayList.get(i), BUTTONID);
+
+                            Log.i("hkjh" , arrayList.get(i) + " " + BUTTONID);
 
 
                         }
+
                         Snackbar.make(v, "Wifi Bilgileri Eklendi.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         startActivity(new Intent(ActivityWifiLevel.this, WLevelList.class));
                     }catch (Exception e) {

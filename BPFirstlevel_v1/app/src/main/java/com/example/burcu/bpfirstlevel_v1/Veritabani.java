@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -84,14 +85,14 @@ public class Veritabani extends SQLiteOpenHelper {
 
     ///////////////////////////////////////////////////
 
-    public void insertWLevel(String level){
+    public void insertWLevel(String level, String BUTTONID){
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO WLBILGILERI VALUES(NULL, ?)";
+        String sql = "INSERT INTO TABLE" + BUTTONID + " VALUES(NULL, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, level);
-
+        Log.i("BUTTONIDDDDDDDDDDDDDD" , BUTTONID);
         statement.executeInsert();
 
     }

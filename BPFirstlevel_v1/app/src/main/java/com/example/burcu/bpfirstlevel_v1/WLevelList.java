@@ -33,7 +33,7 @@ public class WLevelList extends AppCompatActivity {
 
 
 
-        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM WLBILGILERI");
+        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE2131230783");
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);

@@ -18,6 +18,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
     String s_name;
     Bitmap bmp;
     Button btn_wifiListe;
+    public Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +57,17 @@ public class ActivityKonumDetay extends AppCompatActivity {
     public void btnIzgara(View view){
 
         Button b = (Button)view;
-           b.setBackgroundColor(b.getContext().getResources().getColor(R.color.transparan));
+
+        b.setBackgroundColor(b.getContext().getResources().getColor(R.color.transparan));
+
+
 
            long id = b.getId();
             String s_id = String.valueOf(id);
 
-           Intent i = new Intent(ActivityKonumDetay.this, ActivityWifiLevel.class);
-           i.putExtra("ButtonId", s_id);
-           startActivity(i);
+          intent = new Intent(ActivityKonumDetay.this, ActivityWifiLevel.class);
+          intent.putExtra("ButtonId", s_id);
+          startActivity(intent);
     }
 
 }

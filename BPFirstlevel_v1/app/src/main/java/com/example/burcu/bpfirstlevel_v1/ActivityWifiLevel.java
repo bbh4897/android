@@ -30,6 +30,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
     private ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter adapter;
     public static Veritabani veritabani;
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,10 +97,12 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
                     try {
 
+                        extras = getIntent().getExtras();
+                        String b_id = extras.getString("ButtonId");
                         for (int i = 0; i < arrayList.size(); i++) {
                             veritabani.insertWLevel(arrayList.get(i));
 
-                            Log.i("hkjh" , arrayList.get(i));
+                            Log.i("hkjh" , arrayList.get(i) + " " + b_id);
 
 
                         }

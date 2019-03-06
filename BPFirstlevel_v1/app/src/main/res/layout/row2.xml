@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content">
                 <TableRow>
                     <TextView
-                        android:text="Level Adı: "
+                        android:text="Level: "
                         android:textSize="20sp"
                         android:textColor="#000"
                         android:textStyle="bold"

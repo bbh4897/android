@@ -58,7 +58,11 @@ public class ActivityKonumDetay extends AppCompatActivity {
         Button b = (Button)view;
            b.setBackgroundColor(b.getContext().getResources().getColor(R.color.transparan));
 
+           long id = b.getId();
+            String s_id = String.valueOf(id);
+
            Intent i = new Intent(ActivityKonumDetay.this, ActivityWifiLevel.class);
+           i.putExtra("ButtonId", s_id);
            startActivity(i);
     }
 

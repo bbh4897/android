@@ -43,7 +43,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
         btn = findViewById(R.id.btn_wifiscan);
         btn2 = findViewById(R.id.btn_wifilevel);
 
-        veritabani = new Veritabani(this, "BitirmeProjesidb.sqlite", null, 1 );
+        veritabani = new Veritabani(this, "BtrPrjdb.sqlite", null, 1 );
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -98,10 +98,12 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
                         extras = getIntent().getExtras();
                         String BUTTONID = extras.getString("ButtonId");
-                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHARB)");
+                        String KONUMAD = extras.getString("KonumAd");
+
+                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHARB)");
 
                         for (int i = 0; i < arrayList.size(); i++) {
-                            veritabani.insertWLevel(arrayList.get(i), BUTTONID);
+                            veritabani.insertWLevel(arrayList.get(i), BUTTONID, KONUMAD);
 
                             Log.i("hkjh" , arrayList.get(i) + " " + BUTTONID);
 
@@ -111,6 +113,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
                         Snackbar.make(v, "Wifi Bilgileri Eklendi.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         Intent intent_levet = new Intent(ActivityWifiLevel.this, WLevelList.class);
                         intent_levet.putExtra("ButtonId2", BUTTONID);
+                        intent_levet.putExtra("KonumAd2", KONUMAD);
                         startActivity(intent_levet);
                     }catch (Exception e) {
                         e.printStackTrace();

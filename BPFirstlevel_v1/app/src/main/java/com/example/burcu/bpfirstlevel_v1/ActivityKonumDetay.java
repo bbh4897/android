@@ -67,6 +67,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
           intent = new Intent(ActivityKonumDetay.this, ActivityWifiLevel.class);
           intent.putExtra("ButtonId", s_id);
+          intent.putExtra("KonumAd", s_name);
           startActivity(intent);
     }
 

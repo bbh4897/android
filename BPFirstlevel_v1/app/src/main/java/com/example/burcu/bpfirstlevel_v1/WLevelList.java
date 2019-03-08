@@ -35,7 +35,8 @@ public class WLevelList extends AppCompatActivity {
 
         extras = getIntent().getExtras();
         String BUTTONID = extras.getString("ButtonId2");
-        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE" + BUTTONID);
+        String KONUMAD = extras.getString("KonumAd2");
+        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE" + BUTTONID + KONUMAD);
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);

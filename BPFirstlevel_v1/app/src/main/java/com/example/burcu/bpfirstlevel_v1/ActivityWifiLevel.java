@@ -46,6 +46,8 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
         veritabani = new Veritabani(this, "BtrPrjdb.sqlite", null, 1 );
 
+        veritabani = new Veritabani(this, "BtrPrjdb.sqlite", null, 1 );
+
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +55,9 @@ public class ActivityWifiLevel extends AppCompatActivity {
                 extras = getIntent().getExtras();
                 String BUTTONID = extras.getString("ButtonId");
                 String KONUMAD = extras.getString("KonumAd");
+                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHAR)");
+
+
 
                 Intent intent_levet = new Intent(ActivityWifiLevel.this, WLevelList.class);
                 intent_levet.putExtra("ButtonId2", BUTTONID);

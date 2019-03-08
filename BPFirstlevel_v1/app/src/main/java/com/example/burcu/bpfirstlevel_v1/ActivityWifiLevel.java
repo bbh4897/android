@@ -25,7 +25,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
     private WifiManager wifiManager;
     private ListView listView;
-    private Button btn, btn2;
+    private Button btn, btn2, btn3;
     private List<ScanResult> results;
     private ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter adapter;
@@ -42,8 +42,24 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
         btn = findViewById(R.id.btn_wifiscan);
         btn2 = findViewById(R.id.btn_wifilevel);
+        btn3 = findViewById(R.id.btn_wifilevelListe);
 
         veritabani = new Veritabani(this, "BtrPrjdb.sqlite", null, 1 );
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                extras = getIntent().getExtras();
+                String BUTTONID = extras.getString("ButtonId");
+                String KONUMAD = extras.getString("KonumAd");
+
+                Intent intent_levet = new Intent(ActivityWifiLevel.this, WLevelList.class);
+                intent_levet.putExtra("ButtonId2", BUTTONID);
+                intent_levet.putExtra("KonumAd2", KONUMAD);
+                startActivity(intent_levet);
+            }
+        });
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +89,8 @@ public class ActivityWifiLevel extends AppCompatActivity {
         wifiManager.startScan();
         Toast.makeText(this, "Wifi Erişim Noktaları Listeleniyor", Toast.LENGTH_LONG).show();
     }
+
+
 
     BroadcastReceiver wifiReceiver = new BroadcastReceiver() {
         @Override
@@ -111,16 +129,15 @@ public class ActivityWifiLevel extends AppCompatActivity {
                         }
 
                         Snackbar.make(v, "Wifi Bilgileri Eklendi.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                        Intent intent_levet = new Intent(ActivityWifiLevel.this, WLevelList.class);
-                        intent_levet.putExtra("ButtonId2", BUTTONID);
-                        intent_levet.putExtra("KonumAd2", KONUMAD);
-                        startActivity(intent_levet);
+
                     }catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
 
             });
+
+
 
         }
     };

@@ -38,7 +38,7 @@
             android:parentActivityName=".RecordList" />
         <activity android:name=".ActivityWifiListe" />
         <activity android:name=".ActivityWifiLevel" />
-        <activity android:name=".WLevelList"></activity>
+        <activity android:name=".WLevelList" />
     </application>
 
 </manifest>

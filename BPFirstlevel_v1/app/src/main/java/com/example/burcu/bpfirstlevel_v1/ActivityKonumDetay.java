@@ -17,7 +17,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
     ImageView imgIcon2;
     String s_name;
     Bitmap bmp;
-    Button btn_wifiListe;
+    Button btn_wifiListe, btn_konumBul;
     public Intent intent;
 
     @Override
@@ -41,6 +41,17 @@ public class ActivityKonumDetay extends AppCompatActivity {
         imgIcon2.setImageBitmap(bmp);
 
         btn_wifiListe = (Button)findViewById(R.id.wifiListesi);
+        btn_konumBul = (Button)findViewById(R.id.konumBul);
+
+
+        btn_konumBul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
 
         btn_wifiListe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,18 +68,15 @@ public class ActivityKonumDetay extends AppCompatActivity {
     public void btnIzgara(View view){
 
         Button b = (Button)view;
-
         b.setBackgroundColor(b.getContext().getResources().getColor(R.color.transparan));
 
+        long id = b.getId();
+        String s_id = String.valueOf(id);
 
-
-           long id = b.getId();
-            String s_id = String.valueOf(id);
-
-          intent = new Intent(ActivityKonumDetay.this, ActivityWifiLevel.class);
-          intent.putExtra("ButtonId", s_id);
-          intent.putExtra("KonumAd", s_name);
-          startActivity(intent);
+        intent = new Intent(ActivityKonumDetay.this, ActivityWifiLevel.class);
+        intent.putExtra("ButtonId", s_id);
+        intent.putExtra("KonumAd", s_name);
+        startActivity(intent);
     }
 
 }

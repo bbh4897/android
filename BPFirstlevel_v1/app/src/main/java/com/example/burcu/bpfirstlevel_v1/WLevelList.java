@@ -24,7 +24,7 @@ public class WLevelList extends AppCompatActivity {
         setContentView(R.layout.activity_wlevel_list);
 
         ActionBar actionBar  =getSupportActionBar();
-        actionBar.setTitle("Kayıtlı Levellar Listesi");
+        actionBar.setTitle("Kayıtlı Wifi İzleri Listesi");
 
         listView = (ListView)findViewById(R.id.list_view);
         mList = new ArrayList<>();
@@ -41,7 +41,8 @@ public class WLevelList extends AppCompatActivity {
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);
             String level = cursor.getString(1);
-            mList.add(new Model2(id, level));
+            String frekans = cursor.getString(2);
+            mList.add(new Model2(id, level, frekans));
         }
         adapter.notifyDataSetChanged();
     }

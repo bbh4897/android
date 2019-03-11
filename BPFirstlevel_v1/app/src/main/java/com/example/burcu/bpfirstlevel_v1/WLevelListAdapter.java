@@ -40,6 +40,7 @@ public class WLevelListAdapter  extends BaseAdapter {
     private class ViewHolder{
 
         TextView txtName;
+        TextView txtFrekans;
 
     }
 
@@ -54,6 +55,7 @@ public class WLevelListAdapter  extends BaseAdapter {
             LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(layout, null);
             holder.txtName = row.findViewById(R.id.txtName);
+            holder.txtFrekans = row.findViewById(R.id.txtFrekans);
             row.setTag(holder);
         }
         else{
@@ -62,6 +64,7 @@ public class WLevelListAdapter  extends BaseAdapter {
 
         Model2 model = konumList.get(position);
         holder.txtName.setText(model.getLevel());
+        holder.txtFrekans.setText(model.getFrekans());
 
 
         return row;

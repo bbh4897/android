@@ -44,9 +44,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
         btn2 = findViewById(R.id.btn_wifilevel);
         btn3 = findViewById(R.id.btn_wifilevelListe);
 
-        veritabani = new Veritabani(this, "BtrPrjdb.sqlite", null, 1 );
-
-        veritabani = new Veritabani(this, "BtrPrjdb.sqlite", null, 1 );
+        veritabani = new Veritabani(this, "Bitirmedb.sqlite", null, 1 );
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +53,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
                 extras = getIntent().getExtras();
                 String BUTTONID = extras.getString("ButtonId");
                 String KONUMAD = extras.getString("KonumAd");
-                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHAR)");
+                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHAR, frekans VARCHAR)");
 
 
 
@@ -105,7 +103,8 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
             for(ScanResult scanResult : results){
                 String s_level = String.valueOf(scanResult.level * (-1));
-                arrayList.add(s_level);
+                String s_frekans = String.valueOf(scanResult.frequency);
+                arrayList.add(s_level + " - " + s_frekans);
                 adapter.notifyDataSetChanged();
 
             }
@@ -123,10 +122,10 @@ public class ActivityWifiLevel extends AppCompatActivity {
                         String BUTTONID = extras.getString("ButtonId");
                         String KONUMAD = extras.getString("KonumAd");
 
-                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHARB)");
+                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHAR, frekans VARCHAR)");
 
                         for (int i = 0; i < arrayList.size(); i++) {
-                            veritabani.insertWLevel(arrayList.get(i), BUTTONID, KONUMAD);
+                            veritabani.insertWLevel(arrayList.get(i),arrayList.get(i), BUTTONID, KONUMAD);
 
                             Log.i("hkjh" , arrayList.get(i) + " " + BUTTONID);
 

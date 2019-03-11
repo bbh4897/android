@@ -85,15 +85,15 @@ public class Veritabani extends SQLiteOpenHelper {
 
     ///////////////////////////////////////////////////
 
-    public void insertWLevel(String level, String frekans, String BUTTONID, String KONUMAD){
+    public void insertWLevel(String array, String KONUMAD, String hedefKonum){
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO TABLE" + BUTTONID + KONUMAD + " VALUES(NULL, ?, ?)";
+        String sql = "INSERT INTO TABLE" + KONUMAD + hedefKonum +" VALUES(NULL, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
-        statement.bindString(1, level);
-        statement.bindString(2, frekans);
-        Log.i("BUTTONIDDDDDDDDDDDDDD" , BUTTONID + KONUMAD);
+        statement.bindString(1, array);
+        Log.i("KONUMAD DB" ,  KONUMAD);
+        Log.i("HEDEFKONUM DB" ,  hedefKonum);
         statement.executeInsert();
 
     }

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,12 +26,15 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
     private WifiManager wifiManager;
     private ListView listView;
+    private EditText hedefKonum;
     private Button btn, btn2, btn3;
     private List<ScanResult> results;
     private ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter adapter;
     public static Veritabani veritabani;
     private Bundle extras;
+    String BUTTONID, s_level, KONUMAD, s_bssid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
         btn = findViewById(R.id.btn_wifiscan);
         btn2 = findViewById(R.id.btn_wifilevel);
         btn3 = findViewById(R.id.btn_wifilevelListe);
+        hedefKonum = (EditText)findViewById(R.id.hedefKonum);
 
         veritabani = new Veritabani(this, "Bitirmedb.sqlite", null, 1 );
 
@@ -51,15 +56,16 @@ public class ActivityWifiLevel extends AppCompatActivity {
             public void onClick(View v) {
 
                 extras = getIntent().getExtras();
-                String BUTTONID = extras.getString("ButtonId");
-                String KONUMAD = extras.getString("KonumAd");
-                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHAR, frekans VARCHAR)");
+                KONUMAD = extras.getString("KonumAd");
+                BUTTONID = extras.getString("ButtonId");
+                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR)");
 
 
 
                 Intent intent_levet = new Intent(ActivityWifiLevel.this, WLevelList.class);
                 intent_levet.putExtra("ButtonId2", BUTTONID);
                 intent_levet.putExtra("KonumAd2", KONUMAD);
+                intent_levet.putExtra("hedefKonum", hedefKonum.getText().toString());
                 startActivity(intent_levet);
             }
         });
@@ -101,16 +107,17 @@ public class ActivityWifiLevel extends AppCompatActivity {
             results = wifiManager.getScanResults();
             unregisterReceiver(this);
 
+            extras = getIntent().getExtras();
+            KONUMAD = extras.getString("KonumAd");
+            BUTTONID = extras.getString("ButtonId");
+
             for(ScanResult scanResult : results){
-                String s_level = String.valueOf(scanResult.level * (-1));
-                String s_frekans = String.valueOf(scanResult.frequency);
-                arrayList.add(s_level + " - " + s_frekans);
+                s_level = String.valueOf(scanResult.level * (-1));
+                s_bssid = String.valueOf(scanResult.BSSID);
+                arrayList.add(s_bssid + " - " + s_level + " - " + hedefKonum.getText().toString().trim() + " - " + BUTTONID);
                 adapter.notifyDataSetChanged();
 
             }
-//            for(int i = 0; i<arrayList.size();i++){
-//                Log.i("hkjh" , arrayList.get(i));
-//            }
 
             btn2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -119,15 +126,15 @@ public class ActivityWifiLevel extends AppCompatActivity {
                     try {
 
                         extras = getIntent().getExtras();
-                        String BUTTONID = extras.getString("ButtonId");
-                        String KONUMAD = extras.getString("KonumAd");
+                        BUTTONID = extras.getString("ButtonId");
+                        KONUMAD = extras.getString("KonumAd");
 
-                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + BUTTONID + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, level VARCHAR, frekans VARCHAR)");
+                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR)");
 
                         for (int i = 0; i < arrayList.size(); i++) {
-                            veritabani.insertWLevel(arrayList.get(i),arrayList.get(i), BUTTONID, KONUMAD);
+                            veritabani.insertWLevel(arrayList.get(i),KONUMAD, hedefKonum.getText().toString().trim());
 
-                            Log.i("hkjh" , arrayList.get(i) + " " + BUTTONID);
+                            Log.i("ARRAY VE BUTONID  " , arrayList.get(i) + " " + BUTTONID + "HEDEF KONUMMM " + hedefKonum.getText().toString().trim());
 
 
                         }

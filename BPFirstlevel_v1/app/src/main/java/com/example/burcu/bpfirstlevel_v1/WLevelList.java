@@ -34,15 +34,15 @@ public class WLevelList extends AppCompatActivity {
 
 
         extras = getIntent().getExtras();
-        String BUTTONID = extras.getString("ButtonId2");
         String KONUMAD = extras.getString("KonumAd2");
-        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE" + BUTTONID + KONUMAD);
+        String hedefKonum = extras.getString("hedefKonum");
+
+        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE" + KONUMAD + hedefKonum);
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);
-            String level = cursor.getString(1);
-            String frekans = cursor.getString(2);
-            mList.add(new Model2(id, level, frekans));
+            String array = cursor.getString(1);
+            mList.add(new Model2(id, array));
         }
         adapter.notifyDataSetChanged();
     }

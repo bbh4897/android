@@ -3,15 +3,15 @@ package com.example.burcu.bpfirstlevel_v1;
 public class Model2 {
 
     private int id;
-    private String level;
-    private String frekans;
+    private String array;
 
-    public Model2(int id, String level, String frekans){
+
+    public Model2(int id, String array){
         this.id = id;
-        this.level = level;
-        this.frekans = frekans;
-    }
+        this.array = array;
 
+
+    }
 
     public int getId() {
         return id;
@@ -21,19 +21,11 @@ public class Model2 {
         this.id = id;
     }
 
-    public String getLevel() {
-        return level;
+    public String getArray() {
+        return array;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public String getFrekans() {
-        return frekans;
-    }
-
-    public void setFrekans(String frekans) {
-        this.frekans = frekans;
+    public void setArray(String array) {
+        this.array = array;
     }
 }

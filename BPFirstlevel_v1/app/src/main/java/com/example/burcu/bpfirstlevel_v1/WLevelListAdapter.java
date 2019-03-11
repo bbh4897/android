@@ -39,7 +39,7 @@ public class WLevelListAdapter  extends BaseAdapter {
 
     private class ViewHolder{
 
-        TextView txtarray;
+        TextView txtarray, txthedefKonum;
 
     }
 
@@ -54,6 +54,7 @@ public class WLevelListAdapter  extends BaseAdapter {
             LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(layout, null);
             holder.txtarray = row.findViewById(R.id.txtarray);
+            holder.txthedefKonum = row.findViewById(R.id.txthedefKonum);
 
             row.setTag(holder);
         }
@@ -63,6 +64,7 @@ public class WLevelListAdapter  extends BaseAdapter {
 
         Model2 model = konumList.get(position);
         holder.txtarray.setText(model.getArray());
+        holder.txthedefKonum.setText(model.getHedefKonum());
 
 
         return row;

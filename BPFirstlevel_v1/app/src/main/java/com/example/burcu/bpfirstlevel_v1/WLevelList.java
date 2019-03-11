@@ -42,7 +42,8 @@ public class WLevelList extends AppCompatActivity {
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);
             String array = cursor.getString(1);
-            mList.add(new Model2(id, array));
+//            String hedefKonum2 = cursor.getString(2);
+            mList.add(new Model2(id, array, hedefKonum));
         }
         adapter.notifyDataSetChanged();
     }

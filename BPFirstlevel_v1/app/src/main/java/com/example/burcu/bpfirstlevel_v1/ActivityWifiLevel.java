@@ -58,7 +58,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
                 extras = getIntent().getExtras();
                 KONUMAD = extras.getString("KonumAd");
                 BUTTONID = extras.getString("ButtonId");
-                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR)");
+                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR, hedefKonum VARCHAR)");
 
 
 
@@ -114,7 +114,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
             for(ScanResult scanResult : results){
                 s_level = String.valueOf(scanResult.level * (-1));
                 s_bssid = String.valueOf(scanResult.BSSID);
-                arrayList.add(s_bssid + " - " + s_level + " - " + hedefKonum.getText().toString().trim() + " - " + BUTTONID);
+                arrayList.add(s_bssid + " - " + s_level + " - " + BUTTONID + " - ");
                 adapter.notifyDataSetChanged();
 
             }
@@ -128,13 +128,14 @@ public class ActivityWifiLevel extends AppCompatActivity {
                         extras = getIntent().getExtras();
                         BUTTONID = extras.getString("ButtonId");
                         KONUMAD = extras.getString("KonumAd");
+                        hedefKonum = (EditText)findViewById(R.id.hedefKonum);
 
-                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR)");
+                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR, hedefKonum VARCHAR)");
 
                         for (int i = 0; i < arrayList.size(); i++) {
                             veritabani.insertWLevel(arrayList.get(i),KONUMAD, hedefKonum.getText().toString().trim());
 
-                            Log.i("ARRAY VE BUTONID  " , arrayList.get(i) + " " + BUTTONID + "HEDEF KONUMMM " + hedefKonum.getText().toString().trim());
+                            Log.i("ARRAY VE BUTONID  " , arrayList.get(i) + " " + BUTTONID + " HEDEF KONUMMM " + hedefKonum.getText().toString().trim());
 
 
                         }

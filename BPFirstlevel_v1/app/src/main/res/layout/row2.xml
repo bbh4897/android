@@ -12,40 +12,48 @@
     app:contentPadding="5dp">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp">
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp">
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:layout_height="wrap_content">
 
-                <TableRow android:orientation="vertical">
+            <TableRow android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="WIFI IZLERI: "
-                        android:textColor="#000"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="WIFI IZLERI: "
+                    android:textColor="#000"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/txtarray"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Level Adı Alanı: "
-                        android:textColor="#000"
-                        android:textSize="13sp" />
+                <TextView
+                    android:id="@+id/txtarray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Level Adı Alanı: "
+                    android:textColor="#000"
+                    android:textSize="13sp" />
 
-                </TableRow>
+                <TextView
+                    android:id="@+id/txthedefKonum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Level Adı Alanı: "
+                    android:textColor="#000"
+                    android:textSize="13sp" />
+
+            </TableRow>
 
 
-            </TableLayout>
+        </TableLayout>
 
-        </LinearLayout>
+    </LinearLayout>
 
 
 

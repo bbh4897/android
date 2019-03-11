@@ -4,12 +4,13 @@ public class Model2 {
 
     private int id;
     private String array;
+    private String hedefKonum;
 
 
-    public Model2(int id, String array){
+    public Model2(int id, String array, String hedefKonum){
         this.id = id;
         this.array = array;
-
+        this.hedefKonum = hedefKonum;
 
     }
 
@@ -27,5 +28,13 @@ public class Model2 {
 
     public void setArray(String array) {
         this.array = array;
+    }
+
+    public String getHedefKonum() {
+        return hedefKonum;
+    }
+
+    public void setHedefKonum(String hedefKonum) {
+        this.hedefKonum = hedefKonum;
     }
 }

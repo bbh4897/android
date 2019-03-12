@@ -37,7 +37,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
     public static Veritabani veritabani;
     private Bundle extras;
     private String BUTTONID, s_level, KONUMAD, s_bssid, bssid, level, buttonId;
-    private String dizi[][];
+    private String dizi[][], dizi2[][];
 
 
     @Override
@@ -64,8 +64,6 @@ public class ActivityWifiLevel extends AppCompatActivity {
                 KONUMAD = extras.getString("KonumAd");
                 BUTTONID = extras.getString("ButtonId");
                 veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR, hedefKonum VARCHAR)");
-
-
 
                 Intent intent_levet = new Intent(ActivityWifiLevel.this, WLevelList.class);
                 intent_levet.putExtra("ButtonId2", BUTTONID);
@@ -109,7 +107,6 @@ public class ActivityWifiLevel extends AppCompatActivity {
                            dizi[i][1] = level;
                            dizi[i][2] = buttonId;
 
-
                        }
                    }
 
@@ -120,20 +117,31 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
                    System.out.println("Hedef Konum : " + hedefKonum.getText().toString());
 
-                   for(int k=0; k<mList.size(); k++){
-
-                           System.out.println(k+1 + ". Eleman : \n" + "BSSID : " + dizi[k][0] + " LEVEL : " + dizi[k][1] + " BUTONID : " + dizi[k][2] + " Hedefffff : " + hedefKonum.getText().toString());
-
-                   }
+                dizi2 = new String[mList.size()][3];
+                String b_eleman = dizi[0][0];
+                int a=0;
 
 
+
+//                           System.out.println(k+1 + ". Eleman : \n" + "BSSID : " + dizi[k][0] + " LEVEL : " + dizi[k][1] + " BUTONID : " + dizi[k][2] + " Hedefffff : " + hedefKonum.getText().toString());
+                        while (a != dizi.length -1 ){
+
+                            for(int k=1; k<dizi.length; k++){
+
+                               if (dizi[a][0].equals(dizi[k][0]))
+                               {
+                                System.out.println("AYNI : " + " Bırıncı : " +dizi[a][0] + " AYNI OLAN : " + dizi[k][0]);
+                               }
+                               else
+                               {
+                               System.out.println("FARKLI : " + " Bırıncı : " + dizi[a][0] + " FARKLI OLAN : " + dizi[k][0]);
+
+                               }
+                            }
+                            a++;
+                        }
                }
-
-
-
         });
-
-
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,8 +170,6 @@ public class ActivityWifiLevel extends AppCompatActivity {
         wifiManager.startScan();
         Toast.makeText(this, "Wifi Erişim Noktaları Listeleniyor", Toast.LENGTH_LONG).show();
     }
-
-
 
     BroadcastReceiver wifiReceiver = new BroadcastReceiver() {
         @Override
@@ -201,7 +207,6 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
                             Log.i("ARRAY VE BUTONID  " , arrayList.get(i) + " " + BUTTONID + " HEDEF KONUMMM " + hedefKonum.getText().toString().trim());
 
-
                         }
 
                         Snackbar.make(v, "Wifi Bilgileri Eklendi.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -212,9 +217,6 @@ public class ActivityWifiLevel extends AppCompatActivity {
                 }
 
             });
-
-
-
         }
     };
 }

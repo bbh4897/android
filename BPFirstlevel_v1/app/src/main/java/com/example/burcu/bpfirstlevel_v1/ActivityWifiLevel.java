@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
     private Button btn, btn2, btn3, btn4;
     private List<ScanResult> results;
     private ArrayList<String> arrayList = new ArrayList<>();
+    private ArrayList<String> arrayList2;
     private ArrayAdapter adapter;
     public static Veritabani veritabani;
     private Bundle extras;
@@ -117,29 +120,46 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
                    System.out.println("Hedef Konum : " + hedefKonum.getText().toString());
 
-                dizi2 = new String[mList.size()][3];
-                String b_eleman = dizi[0][0];
-                int a=0;
 
-
-
+                   int a=0;
 //                           System.out.println(k+1 + ". Eleman : \n" + "BSSID : " + dizi[k][0] + " LEVEL : " + dizi[k][1] + " BUTONID : " + dizi[k][2] + " Hedefffff : " + hedefKonum.getText().toString());
-                        while (a != dizi.length -1 ){
+                   while (a != dizi.length -1 ){
 
-                            for(int k=1; k<dizi.length; k++){
+                      for(int k=1; k<dizi.length; k++){
 
-                               if (dizi[a][0].equals(dizi[k][0]))
-                               {
-                                System.out.println("AYNI : " + " Bırıncı : " +dizi[a][0] + " AYNI OLAN : " + dizi[k][0]);
-                               }
-                               else
-                               {
-                               System.out.println("FARKLI : " + " Bırıncı : " + dizi[a][0] + " FARKLI OLAN : " + dizi[k][0]);
+                         if (dizi[a][0].equals(dizi[k][0])){
 
-                               }
-                            }
-                            a++;
-                        }
+                           System.out.println("AYNI : " + " Bırıncı : " + dizi[a][0] + " AYNI OLAN : " + dizi[k][0]);
+
+                           int level1 = Integer.parseInt(dizi[a][1]);
+                           int level2 = Integer.parseInt(dizi[k][1]);
+
+                           if( level1 < level2){
+
+                               dizi[k][1] = dizi[a][1];
+                           }
+
+                           else if (level2 < level1){
+                               dizi[a][1] = dizi[k][1];
+                           }
+                           else if (level2 == level1){
+                               dizi[a][1] = dizi[k][1];
+                           }
+
+                         }else{
+
+                           System.out.println("FARKLI : " + " Bırıncı : " + dizi[a][0] + " FARKLI OLAN : " + dizi[k][0]);
+                          }
+                      }
+                      a++;
+                   }
+
+                   for(int y=0; y<dizi.length; y++){
+                       System.out.println("\nDİZİ : \n" + "BSSID :  " + dizi[y][0]+ " LEVEL : " + dizi[y][1]);
+                   }
+
+
+
                }
         });
 

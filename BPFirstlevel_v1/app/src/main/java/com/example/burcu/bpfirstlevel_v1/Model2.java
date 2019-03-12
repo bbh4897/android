@@ -14,6 +14,11 @@ public class Model2 {
 
     }
 
+    public Model2(String array, String hedefKonum){
+        this.array = array;
+        this.hedefKonum = hedefKonum;
+
+    }
     public int getId() {
         return id;
     }

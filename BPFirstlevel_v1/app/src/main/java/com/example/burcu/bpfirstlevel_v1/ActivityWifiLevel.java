@@ -108,15 +108,23 @@ public class ActivityWifiLevel extends AppCompatActivity {
                            dizi[i][0] = bssid;
                            dizi[i][1] = level;
                            dizi[i][2] = buttonId;
+
+
                        }
                    }
 
                    System.out.println("Liste Boyutu : " + mList.size() + " Dizi Boyutu : " + dizi.length);
-                   System.out.println("Dizi BSSID : " + dizi[10][0]); // 5. elemanı almak ıcın 4. ındıs kullanılır
-                   System.out.println("Dizi LEVEL : " + dizi[10][1]);
-                   System.out.println("Dizi BUTONID : " + dizi[10][2]);
+                   System.out.println("Dizi BSSID : " + dizi[2][0]); // 5. elemanı almak ıcın 4. ındıs kullanılır
+                   System.out.println("Dizi LEVEL : " + dizi[2][1]);
+                   System.out.println("Dizi BUTONID : " + dizi[2][2]);
 
+                   System.out.println("Hedef Konum : " + hedefKonum.getText().toString());
 
+                   for(int k=0; k<mList.size(); k++){
+
+                           System.out.println(k+1 + ". Eleman : \n" + "BSSID : " + dizi[k][0] + " LEVEL : " + dizi[k][1] + " BUTONID : " + dizi[k][2] + " Hedefffff : " + hedefKonum.getText().toString());
+
+                   }
 
 
                }

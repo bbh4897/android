@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.support.design.widget.Snackbar;
@@ -20,20 +21,23 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ActivityWifiLevel extends AppCompatActivity {
 
     private WifiManager wifiManager;
     private ListView listView;
     private EditText hedefKonum;
-    private Button btn, btn2, btn3;
+    private Button btn, btn2, btn3, btn4;
     private List<ScanResult> results;
     private ArrayList<String> arrayList = new ArrayList<>();
     private ArrayAdapter adapter;
     public static Veritabani veritabani;
     private Bundle extras;
-    String BUTTONID, s_level, KONUMAD, s_bssid;
+    private String BUTTONID, s_level, KONUMAD, s_bssid, bssid, level, buttonId;
+    private String dizi[][];
 
 
     @Override
@@ -47,6 +51,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
         btn = findViewById(R.id.btn_wifiscan);
         btn2 = findViewById(R.id.btn_wifilevel);
         btn3 = findViewById(R.id.btn_wifilevelListe);
+        btn4 = findViewById(R.id.btn_bitir);
         hedefKonum = (EditText)findViewById(R.id.hedefKonum);
 
         veritabani = new Veritabani(this, "Bitirmedb.sqlite", null, 1 );
@@ -69,6 +74,57 @@ public class ActivityWifiLevel extends AppCompatActivity {
                 startActivity(intent_levet);
             }
         });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ArrayList<Model2> mList = new ArrayList<>();
+
+                extras = getIntent().getExtras();
+                KONUMAD = extras.getString("KonumAd");
+
+                Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE" + KONUMAD + hedefKonum.getText().toString());
+                mList.clear();
+                while(cursor.moveToNext()){
+                    int id = cursor.getInt(0);
+                    String array = cursor.getString(1);
+//            String hedefKonum2 = cursor.getString(2);
+                    mList.add(new Model2(id, array, hedefKonum.getText().toString().trim()));
+                }
+
+                dizi = new String[mList.size()][3];
+
+                   for (int i = 0; i < mList.size(); i++) {
+
+                       Model2 m = mList.get(i);
+
+                       bssid = m.getArray().substring(0, 17);
+                       level = (m.getArray().substring(20, 22));
+                       buttonId = (m.getArray().substring(25, 35));
+
+                       for (int j = 0; j <mList.size(); j++) {
+
+                           dizi[i][0] = bssid;
+                           dizi[i][1] = level;
+                           dizi[i][2] = buttonId;
+                       }
+                   }
+
+                   System.out.println("Liste Boyutu : " + mList.size() + " Dizi Boyutu : " + dizi.length);
+                   System.out.println("Dizi BSSID : " + dizi[10][0]); // 5. elemanı almak ıcın 4. ındıs kullanılır
+                   System.out.println("Dizi LEVEL : " + dizi[10][1]);
+                   System.out.println("Dizi BUTONID : " + dizi[10][2]);
+
+
+
+
+               }
+
+
+
+        });
+
 
 
         btn.setOnClickListener(new View.OnClickListener() {

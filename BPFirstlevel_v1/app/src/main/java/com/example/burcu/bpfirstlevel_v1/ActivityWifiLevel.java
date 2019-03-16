@@ -165,12 +165,17 @@ public class ActivityWifiLevel extends AppCompatActivity {
                        " HEdef KONUM : " + hedefKonum.getText().toString());
 
                        set.add(dizi[y][0] + " - " + dizi[y][1] + " - " + dizi[y][2] + " - " + hedefKonum.getText().toString() );
+                       arrayList2.add(set.toString());
 
                    }
 
                 Iterator<String> itr=set.iterator();
                 while(itr.hasNext()){
                     System.out.println(" HASHSET : " + itr.next());
+                }
+
+                for(int x=0; x<arrayList2.size(); x++){
+                    System.out.println(" ARRAYLIST 2  : " + arrayList2.get(x).toString());
                 }
 
 

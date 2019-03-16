@@ -165,10 +165,10 @@ public class ActivityWifiLevel extends AppCompatActivity {
                        " HEdef KONUM : " + hedefKonum.getText().toString());
 
                        set.add(dizi[y][0] + " - " + dizi[y][1] + " - " + dizi[y][2] );
-                       arrayList2.add(set.toString());
+
 
                    }
-
+                arrayList2.add(set.toString());
 //                Iterator<String> itr=set.iterator();
 //                while(itr.hasNext()){
 //                    System.out.println(" HASHSET : " + itr.next());
@@ -181,10 +181,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
                 veritabani.queryData("DELETE FROM TABLE" + KONUMAD + hedefKonum.getText().toString());
                 for (int i = 0; i < arrayList2.size(); i++) {
                     veritabani.insertWLevel(arrayList2.get(i),KONUMAD, hedefKonum.getText().toString().trim());
-
-                    Log.i("DB YENIDEN : " , "YENI ARL : " + arrayList2.get(i) + " **** " + "YENI  HEDEF KONUMMM  : " +
-                            hedefKonum.getText().toString().trim());
-
+                    System.out.println("testttttt : " + arrayList2.get(i).toString());
                 }
 
 

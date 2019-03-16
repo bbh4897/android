@@ -164,18 +164,27 @@ public class ActivityWifiLevel extends AppCompatActivity {
                        System.out.println("\nDİZİ : \n" + "BSSID :  " + dizi[y][0]+ " LEVEL : " + dizi[y][1] + " BUTON ID : " + dizi[y][2] +
                        " HEdef KONUM : " + hedefKonum.getText().toString());
 
-                       set.add(dizi[y][0] + " - " + dizi[y][1] + " - " + dizi[y][2] + " - " + hedefKonum.getText().toString() );
+                       set.add(dizi[y][0] + " - " + dizi[y][1] + " - " + dizi[y][2] );
                        arrayList2.add(set.toString());
 
                    }
 
-                Iterator<String> itr=set.iterator();
-                while(itr.hasNext()){
-                    System.out.println(" HASHSET : " + itr.next());
-                }
+//                Iterator<String> itr=set.iterator();
+//                while(itr.hasNext()){
+//                    System.out.println(" HASHSET : " + itr.next());
+//                }
+//
+//                for(int x=0; x<arrayList2.size(); x++){
+//                    System.out.println(" ARRAYLIST 2  : " + arrayList2.get(x).toString());
+//                }
 
-                for(int x=0; x<arrayList2.size(); x++){
-                    System.out.println(" ARRAYLIST 2  : " + arrayList2.get(x).toString());
+                veritabani.queryData("DELETE FROM TABLE" + KONUMAD + hedefKonum.getText().toString());
+                for (int i = 0; i < arrayList2.size(); i++) {
+                    veritabani.insertWLevel(arrayList2.get(i),KONUMAD, hedefKonum.getText().toString().trim());
+
+                    Log.i("DB YENIDEN : " , "YENI ARL : " + arrayList2.get(i) + " **** " + "YENI  HEDEF KONUMMM  : " +
+                            hedefKonum.getText().toString().trim());
+
                 }
 
 

@@ -24,6 +24,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +43,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
     private Bundle extras;
     private String BUTTONID, s_level, KONUMAD, s_bssid, bssid, level, buttonId;
     private String dizi[][], dizi2[][];
+    HashSet<String> set;
 
 
     @Override
@@ -84,6 +87,9 @@ public class ActivityWifiLevel extends AppCompatActivity {
 
                 extras = getIntent().getExtras();
                 KONUMAD = extras.getString("KonumAd");
+
+                arrayList2 = new ArrayList<>();
+                set = new HashSet<String>();
 
                 Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLE" + KONUMAD + hedefKonum.getText().toString());
                 mList.clear();
@@ -155,12 +161,20 @@ public class ActivityWifiLevel extends AppCompatActivity {
                    }
 
                    for(int y=0; y<dizi.length; y++){
-                       System.out.println("\nDİZİ : \n" + "BSSID :  " + dizi[y][0]+ " LEVEL : " + dizi[y][1]);
+                       System.out.println("\nDİZİ : \n" + "BSSID :  " + dizi[y][0]+ " LEVEL : " + dizi[y][1] + " BUTON ID : " + dizi[y][2] +
+                       " HEdef KONUM : " + hedefKonum.getText().toString());
+
+                       set.add(dizi[y][0] + " - " + dizi[y][1] + " - " + dizi[y][2] + " - " + hedefKonum.getText().toString() );
+
                    }
 
+                Iterator<String> itr=set.iterator();
+                while(itr.hasNext()){
+                    System.out.println(" HASHSET : " + itr.next());
+                }
 
 
-               }
+            }
         });
 
         btn.setOnClickListener(new View.OnClickListener() {

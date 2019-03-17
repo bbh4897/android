@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class ActivityKonumDetay extends AppCompatActivity {
@@ -198,27 +200,99 @@ public class ActivityKonumDetay extends AppCompatActivity {
                                 oklit_dizi[count][0] = s_oklit;
                                 oklit_dizi[count][1] = db_dizi[b][2];
                                 oklit_dizi[count][2] = db_dizi[b][3];
-                                System.out.println("OKLIT SONUC EKSİ : \n LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1] );
+                                System.out.println("Oklit Sonuc: ");
+                                System.out.println("LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1]  + " HEDEF : " +oklit_dizi[count][2]);
                             }
                             else{
                                 String s_oklit = String.valueOf(oklit);
                                 oklit_dizi[count][0] = s_oklit;
                                 oklit_dizi[count][1] = db_dizi[b][2];
                                 oklit_dizi[count][2] = db_dizi[b][3];
-                                System.out.println("OKLIT SONUC ARTI : \n LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1] );
+                                System.out.println("Oklit Sonuc: ");
+                                System.out.println("LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1]  + " HEDEF : " +oklit_dizi[count][2]);
                             }
 
 
                             count++;
 
-
-
-
-
-
                         }
                     }
                 }
+
+                for(int i=1; i<count;i++){
+                    System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+
+
+                }
+
+                    System.out.print("********************************************************************** \n");
+
+//                    int a=1, bir, iki;
+//
+//                    while (a != oklit_dizi.length-1 ){
+//
+//                            bir = Integer.parseInt(oklit_dizi[a][0]);
+//                            iki = Integer.parseInt(oklit_dizi[a+1][0]);
+//
+//                            if (bir > iki){
+//
+//                                String t_level, t_butonId, t_hedefKonum ;
+//
+//                                System.out.println("ONCE BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
+//                                        " Birinci HEDEF : " + oklit_dizi[a][2]);
+//
+//                                System.out.println("ONCE İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
+//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
+//
+//
+//                                System.out.println(" TEST : " + oklit_dizi[a][0] + " iki : " + oklit_dizi[a+1][0]);
+//
+//                                t_level = oklit_dizi[a+1][0];;
+//                                oklit_dizi[a+1][0] = oklit_dizi[a][0];
+//                                oklit_dizi[a][0] = t_level;
+//
+//                                t_butonId = oklit_dizi[a+1][1];;
+//                                oklit_dizi[a+1][1] = oklit_dizi[a][1];
+//                                oklit_dizi[a][1] = t_butonId;
+//
+//                                t_hedefKonum = oklit_dizi[a+1][2];;
+//                                oklit_dizi[a+1][2] = oklit_dizi[a][2];
+//                                oklit_dizi[a][2] = t_hedefKonum;
+//
+//
+//                                System.out.println("TAMPON BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
+//                                " Birinci HEDEF : " + oklit_dizi[a][2]);
+//
+//                                System.out.println("TAMPON İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
+//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
+//
+//
+//                            }else if(bir < iki){
+//                                System.out.println(" TEST : " + oklit_dizi[a][0] + " iki : " + oklit_dizi[a+1][0]);
+//                                System.out.println("DEGISMEYEN BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
+//                                        " Birinci HEDEF : " + oklit_dizi[a][2]);
+//
+//                                System.out.println("DEGISMEYEN İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
+//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
+//
+//                            }
+//                            else if(bir == iki){
+//                                System.out.println(" TEST : " + oklit_dizi[a][0] + " iki : " + oklit_dizi[a+1][0]);
+//                                System.out.println("EŞİT BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
+//                                        " Birinci HEDEF : " + oklit_dizi[a][2]);
+//
+//                                System.out.println("EŞİT İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
+//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
+//                            }
+//
+//                        a++;
+//                        String.valueOf(bir);
+//                        String.valueOf(iki);
+//                    }
+
+
+
+
 
              }
             });
@@ -226,5 +300,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
         }
     };
+
+
 
 }

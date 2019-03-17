@@ -165,14 +165,17 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     db_dizi[i][0] = mList2.get(i).substring(0,17);
                     db_dizi[i][1] = mList2.get(i).substring(20,22);
                     db_dizi[i][2] = mList2.get(i).substring(25,35);
+                    db_dizi[i][3] = mList2.get(i).substring(38);
                     System.out.println("DB DİZİ ELEMANLARI BSSID : " + db_dizi[i][0]);
                     System.out.println("DB DİZİ ELEMANLARI LEVEL : " + db_dizi[i][1]);
                     System.out.println("DB DİZİ ELEMANLARI BUTONID : " + db_dizi[i][2]);
+                    System.out.println("DB DİZİ ELEMANLARI HEDEF KONUM : " + db_dizi[i][3]);
 
                 }
 
 
                 int count=1;
+                oklit_dizi = new String[70][3];
 
                 for(int a=0; a<anlik_dizi.length;a++){
                     for(int b=0; b<db_dizi.length;b++) {
@@ -180,8 +183,9 @@ public class ActivityKonumDetay extends AppCompatActivity {
                         if (anlik_dizi[a][0].equals(db_dizi[b][0])) {
 
 
-                            System.out.println("AYNI BSSID : " + db_dizi[b][0] + " - " + db_dizi[b][2] + " BOYUT : " + count );
-                            oklit_dizi = new String[count][2];
+                            System.out.println("AYNI BSSID : " + db_dizi[b][0] + " LEvel ANlık :  " + anlik_dizi[a][1] +
+                                    " LEVEL DB : " + db_dizi[b][1] + " BUTONID: " + db_dizi[b][2] + " HEDEF KONUM : " + db_dizi[b][3] + " BOYUT : " + count );
+
 
                             int level = Integer.parseInt(db_dizi[b][1]);
                             int oklit = ( (Integer.parseInt(anlik_dizi[a][1])) - (Integer.parseInt(db_dizi[b][1])) );
@@ -193,12 +197,14 @@ public class ActivityKonumDetay extends AppCompatActivity {
                                 String s_oklit = String.valueOf(oklit);
                                 oklit_dizi[count][0] = s_oklit;
                                 oklit_dizi[count][1] = db_dizi[b][2];
+                                oklit_dizi[count][2] = db_dizi[b][3];
                                 System.out.println("OKLIT SONUC EKSİ : \n LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1] );
                             }
                             else{
                                 String s_oklit = String.valueOf(oklit);
                                 oklit_dizi[count][0] = s_oklit;
                                 oklit_dizi[count][1] = db_dizi[b][2];
+                                oklit_dizi[count][2] = db_dizi[b][3];
                                 System.out.println("OKLIT SONUC ARTI : \n LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1] );
                             }
 

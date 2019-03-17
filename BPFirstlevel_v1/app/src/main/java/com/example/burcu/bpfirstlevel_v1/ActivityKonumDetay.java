@@ -158,19 +158,28 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                 }
 
-                    for(int i=0;i<db_dizi.length;i++) {
+                for(int i=0;i<db_dizi.length;i++) {
 
-                        db_dizi[i][0] = mList2.get(i).substring(0,17);
-                        db_dizi[i][1] = mList2.get(i).substring(20,22);
-                        db_dizi[i][2] = mList2.get(i).substring(25,35);
-                        System.out.println("DB DİZİ ELEMANLARI BSSID : " + db_dizi[i][0]);
-                        System.out.println("DB DİZİ ELEMANLARI LEVEL : " + db_dizi[i][1]);
-                        System.out.println("DB DİZİ ELEMANLARI BUTONID : " + db_dizi[i][2]);
-
-                    }
-
+                    db_dizi[i][0] = mList2.get(i).substring(0,17);
+                    db_dizi[i][1] = mList2.get(i).substring(20,22);
+                    db_dizi[i][2] = mList2.get(i).substring(25,35);
+                    System.out.println("DB DİZİ ELEMANLARI BSSID : " + db_dizi[i][0]);
+                    System.out.println("DB DİZİ ELEMANLARI LEVEL : " + db_dizi[i][1]);
+                    System.out.println("DB DİZİ ELEMANLARI BUTONID : " + db_dizi[i][2]);
 
                 }
+
+                for(int a=0; a<anlik_dizi.length;a++){
+                    for(int b=0; b<db_dizi.length;b++) {
+                        if (anlik_dizi[a][0].equals(db_dizi[b][0])) {
+
+                            System.out.println("AYNI BSSID : " + db_dizi[b][0] + " - " + db_dizi[b][2]);
+
+                        }
+                    }
+                }
+
+             }
             });
 
 

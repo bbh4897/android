@@ -35,6 +35,9 @@ public class ActivityKonumDetay extends AppCompatActivity {
     ArrayList<String> mList2;
     ArrayList<String> arrayList= new ArrayList<>();
 
+    String anlik_dizi[][];
+    String db_dizi[][];
+
 
     public WifiManager wifiManager;
     public List<ScanResult> results;
@@ -115,7 +118,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
             unregisterReceiver(this);
 
             for(ScanResult scanResult : results){
-                arrayList.add(scanResult.SSID + " - " + scanResult.BSSID + " ** " + scanResult.level + " - " + scanResult.frequency);
+                arrayList.add(scanResult.BSSID + " - " + scanResult.level);
 //                adapter.notifyDataSetChanged();
 
             }
@@ -134,14 +137,39 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     }
 
                 for(int i=0; i<mList.size();i++){
-                   System.out.println(" KONUM BUL : " + mList.get(i).getWifis());
-                   // mList2.add(mList.get(i).getWifis().substring(20,36));
-                    //System.out.println("mlist2 :    " + mList2.get(i));
+//                    System.out.println(" KONUM BUL : " + mList.get(i).getWifis().substring(20,22));
+                    mList2.add(mList.get(i).getWifis());
+                    System.out.println("DB'deki Wifi Izlerı :    " + mList2.get(i));
                 }
 
-                    for(int y=0; y<arrayList.size();y++) {
-                        System.out.println("SCAN WİFİ : " + arrayList.get(y));
+                for(int y=0; y<arrayList.size();y++) {
+                    System.out.println("Anlık Wifi İzleri : " + arrayList.get(y));
+                }
+
+                anlik_dizi = new String[arrayList.size()][2];
+                db_dizi = new String[mList2.size()][4];
+
+                for(int i=0;i<anlik_dizi.length;i++) {
+
+                    anlik_dizi[i][0] = arrayList.get(i).substring(0,17);
+                    anlik_dizi[i][1] = arrayList.get(i).substring(21,23);
+                    System.out.println("ANLIK DİZİ ELEMANLARI BSSID : " + anlik_dizi[i][0]);
+                    System.out.println("ANLIK DİZİ ELEMANLARI LEVEL : " + anlik_dizi[i][1]);
+
+                }
+
+                    for(int i=0;i<db_dizi.length;i++) {
+
+                        db_dizi[i][0] = mList2.get(i).substring(0,17);
+                        db_dizi[i][1] = mList2.get(i).substring(20,22);
+                        db_dizi[i][2] = mList2.get(i).substring(25,35);
+                        System.out.println("DB DİZİ ELEMANLARI BSSID : " + db_dizi[i][0]);
+                        System.out.println("DB DİZİ ELEMANLARI LEVEL : " + db_dizi[i][1]);
+                        System.out.println("DB DİZİ ELEMANLARI BUTONID : " + db_dizi[i][2]);
+
                     }
+
+
                 }
             });
 

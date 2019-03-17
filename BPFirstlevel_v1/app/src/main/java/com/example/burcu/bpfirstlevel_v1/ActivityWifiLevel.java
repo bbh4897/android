@@ -232,24 +232,24 @@ public class ActivityWifiLevel extends AppCompatActivity {
             }
 
             btn2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                            @Override
+                            public void onClick(View v) {
 
-                    try {
+                                try {
 
-                        extras = getIntent().getExtras();
-                        BUTTONID = extras.getString("ButtonId");
-                        KONUMAD = extras.getString("KonumAd");
-                        hedefKonum = (EditText)findViewById(R.id.hedefKonum);
+                                    extras = getIntent().getExtras();
+                                    BUTTONID = extras.getString("ButtonId");
+                                    KONUMAD = extras.getString("KonumAd");
+                                    hedefKonum = (EditText)findViewById(R.id.hedefKonum);
 
-                        veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR, hedefKonum VARCHAR)");
+                                    veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLE" + KONUMAD + hedefKonum.getText().toString().trim() + "(id INTEGER PRIMARY KEY AUTOINCREMENT, array VARCHAR, hedefKonum VARCHAR)");
 
-                        for (int i = 0; i < arrayList.size(); i++) {
-                            veritabani.insertWLevel(arrayList.get(i),KONUMAD, hedefKonum.getText().toString().trim());
+                                    for (int i = 0; i < arrayList.size(); i++) {
+                                        veritabani.insertWLevel(arrayList.get(i),KONUMAD, hedefKonum.getText().toString().trim());
 
-                            Log.i("ARRAY VE BUTONID  " , arrayList.get(i) + " " + BUTTONID + " HEDEF KONUMMM " + hedefKonum.getText().toString().trim());
+                                        Log.i("ARRAY VE BUTONID  " , arrayList.get(i) + " " + BUTTONID + " HEDEF KONUMMM " + hedefKonum.getText().toString().trim());
 
-                        }
+                                    }
 
                         Snackbar.make(v, "Wifi Bilgileri Eklendi.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 

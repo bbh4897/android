@@ -20,12 +20,12 @@ import java.util.List;
 
 public class ActivityWifiListe extends AppCompatActivity {
 
-    private WifiManager wifiManager;
-    private ListView listView;
-    private Button btn;
-    private List<ScanResult> results;
-    private ArrayList<String> arrayList = new ArrayList<>();
-    private ArrayAdapter adapter;
+    public WifiManager wifiManager;
+    public ListView listView;
+    public Button btn;
+    public List<ScanResult> results;
+    public ArrayList<String> arrayList = new ArrayList<>();
+    public ArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

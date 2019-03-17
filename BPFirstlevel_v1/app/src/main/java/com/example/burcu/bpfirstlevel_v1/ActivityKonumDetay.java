@@ -37,6 +37,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
     String anlik_dizi[][];
     String db_dizi[][];
+    String oklit_dizi[][];
 
 
     public WifiManager wifiManager;
@@ -149,6 +150,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                 anlik_dizi = new String[arrayList.size()][2];
                 db_dizi = new String[mList2.size()][4];
 
+
                 for(int i=0;i<anlik_dizi.length;i++) {
 
                     anlik_dizi[i][0] = arrayList.get(i).substring(0,17);
@@ -169,11 +171,21 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                 }
 
+
+                int count=1;
+
                 for(int a=0; a<anlik_dizi.length;a++){
                     for(int b=0; b<db_dizi.length;b++) {
                         if (anlik_dizi[a][0].equals(db_dizi[b][0])) {
 
-                            System.out.println("AYNI BSSID : " + db_dizi[b][0] + " - " + db_dizi[b][2]);
+
+                            System.out.println("AYNI BSSID : " + db_dizi[b][0] + " - " + db_dizi[b][2] + " BOYUT : " + count );
+                            count++;
+                            oklit_dizi = new String[count][2];
+
+                            
+
+
 
                         }
                     }

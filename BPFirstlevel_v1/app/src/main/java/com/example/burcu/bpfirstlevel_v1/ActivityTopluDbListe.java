@@ -17,7 +17,7 @@ public class ActivityTopluDbListe extends AppCompatActivity {
 
     ArrayList<Model3> mList;
     WTopluListAdapter adapter = null;
-    private Bundle extras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,21 +26,20 @@ public class ActivityTopluDbListe extends AppCompatActivity {
         ActionBar actionBar  =getSupportActionBar();
         actionBar.setTitle("Kayıtlı Tüm Wifi İzleri Listesi");
 
-//        listView = (ListView)findViewById(R.id.list_view);
-//        mList = new ArrayList<>();
-//        adapter = new WTopluListAdapter(this, R.layout.row3, mList);
-//        listView.setAdapter(adapter);
-//
-//        extras = getIntent().getExtras();
-//        String hedefKonum = extras.getString("hedefKonum");
-//
-//        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLEDBS");
-//        mList.clear();
-//        while(cursor.moveToNext()){
-//            int id = cursor.getInt(0);
-//            String wifis = cursor.getString(1);
-//            mList.add(new Model3(id, wifis,hedefKonum ));
-//        }
-//        adapter.notifyDataSetChanged();
+        listView = (ListView)findViewById(R.id.list_view);
+        mList = new ArrayList<>();
+        adapter = new WTopluListAdapter(this, R.layout.row3, mList);
+        listView.setAdapter(adapter);
+
+
+        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLEDBS");
+        mList.clear();
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            String wifis = cursor.getString(1);
+            mList.add(new Model3(id, wifis));
+        }
+        adapter.notifyDataSetChanged();
     }
 }
+

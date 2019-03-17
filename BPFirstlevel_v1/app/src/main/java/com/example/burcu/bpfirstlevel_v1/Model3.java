@@ -4,15 +4,14 @@ package com.example.burcu.bpfirstlevel_v1;
 
         private int id;
         private String wifis;
-        private String hedefKonum;
 
 
-        public Model3(int id, String wifis, String hedefKonum){
+        public Model3(int id, String wifis){
             this.id = id;
             this.wifis = wifis;
-            this.hedefKonum = hedefKonum;
 
         }
+
 
         public int getId() {
             return id;
@@ -30,11 +29,4 @@ package com.example.burcu.bpfirstlevel_v1;
             this.wifis = wifis;
         }
 
-        public String getHedefKonum() {
-            return hedefKonum;
-        }
-
-        public void setHedefKonum(String hedefKonum) {
-            this.hedefKonum = hedefKonum;
-        }
     }

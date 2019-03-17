@@ -173,17 +173,14 @@ public class ActivityWifiLevel extends AppCompatActivity {
                     arrayList2.add(itr.next());
                 }
 
-//                for(int x=0; x<arrayList2.size(); x++){
-//                    System.out.println(" ARRAYLIST 2  : " + arrayList2.get(x).toString());
-//                }
-
-
-
                 veritabani.queryData("DELETE FROM TABLE" + KONUMAD + hedefKonum.getText().toString());
                 for (int i = 0; i < arrayList2.size(); i++) {
                     veritabani.insertWLevel(arrayList2.get(i),KONUMAD, hedefKonum.getText().toString().trim());
                     System.out.println("testttttt : " + arrayList2.get(i).toString());
                 }
+
+
+
 
             }
         });

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -19,7 +20,10 @@ public class WLevelList extends AppCompatActivity {
     Button btn2, btn3;
 
     ArrayList<Model2> mList;
+    ArrayList<String>  mList2;
+
     WLevelListAdapter adapter = null;
+
     private Bundle extras;
 
     public static Veritabani veritabani;
@@ -37,17 +41,30 @@ public class WLevelList extends AppCompatActivity {
 
         veritabani = new Veritabani(this, "Bitirmedb.sqlite", null, 1 );
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        mList2 = new ArrayList<>();
+                btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                extras = getIntent().getExtras();
-                String hedefKonum = extras.getString("hedefKonum");
-                String KONUMAD = extras.getString("KonumAd2");
 
                 veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
 
+
+
                 for (int i = 0; i < mList.size(); i++) {
-                   // veritabani.insertWifis(mList.get(i));
+
+                   mList2.add(mList.get(i).getArray());
+
+                }
+
+
+                for (int i = 0; i < mList2.size(); i++) {
+
+                   veritabani.insertWifis(mList2.get(i));
+                }
+
+                for (int k = 0; k < mList2.size(); k++) {
+
+                   System.out.println("MMMLIST 2  : " + mList2.get(k).toString());
                 }
                 Snackbar.make(v, "Veri Eklendi", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
@@ -55,18 +72,14 @@ public class WLevelList extends AppCompatActivity {
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
+        public void onClick(View v) {
+            veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
 
-                extras = getIntent().getExtras();
-                String hedefKonum = extras.getString("hedefKonum");
+            Intent intent_levet = new Intent(WLevelList.this, ActivityTopluDbListe.class);
+            startActivity(intent_levet);
 
-                Intent intent_levet = new Intent(WLevelList.this, ActivityTopluDbListe.class);
-                intent_levet.putExtra("hedefKonum", hedefKonum);
-                startActivity(intent_levet);
-
-            }
-        });
+        }
+    });
 
         listView = (ListView)findViewById(R.id.list_view);
         mList = new ArrayList<>();

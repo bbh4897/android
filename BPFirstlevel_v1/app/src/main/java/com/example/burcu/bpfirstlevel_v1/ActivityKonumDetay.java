@@ -176,14 +176,37 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                 for(int a=0; a<anlik_dizi.length;a++){
                     for(int b=0; b<db_dizi.length;b++) {
+
                         if (anlik_dizi[a][0].equals(db_dizi[b][0])) {
 
 
                             System.out.println("AYNI BSSID : " + db_dizi[b][0] + " - " + db_dizi[b][2] + " BOYUT : " + count );
-                            count++;
                             oklit_dizi = new String[count][2];
 
-                            
+                            int level = Integer.parseInt(db_dizi[b][1]);
+                            int oklit = ( (Integer.parseInt(anlik_dizi[a][1])) - (Integer.parseInt(db_dizi[b][1])) );
+
+                            System.out.println("OKLIT SONUC : " + oklit);
+
+                            if(oklit<0){
+                                oklit = oklit * (-1);
+                                String s_oklit = String.valueOf(oklit);
+                                oklit_dizi[count][0] = s_oklit;
+                                oklit_dizi[count][1] = db_dizi[b][2];
+                                System.out.println("OKLIT SONUC EKSİ : \n LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1] );
+                            }
+                            else{
+                                String s_oklit = String.valueOf(oklit);
+                                oklit_dizi[count][0] = s_oklit;
+                                oklit_dizi[count][1] = db_dizi[b][2];
+                                System.out.println("OKLIT SONUC ARTI : \n LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1] );
+                            }
+
+
+                            count++;
+
+
+
 
 
 

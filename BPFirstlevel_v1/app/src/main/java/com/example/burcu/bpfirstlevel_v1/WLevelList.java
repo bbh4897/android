@@ -48,11 +48,12 @@ public class WLevelList extends AppCompatActivity {
 
                 veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
 
-
+                extras = getIntent().getExtras();
+                String hedefKonum = extras.getString("hedefKonum");
 
                 for (int i = 0; i < mList.size(); i++) {
 
-                   mList2.add(mList.get(i).getArray());
+                   mList2.add(mList.get(i).getArray() + " - " + hedefKonum);
 
                 }
 

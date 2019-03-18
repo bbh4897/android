@@ -132,9 +132,14 @@ public class ActivityKonumDetay extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
+                    Intent intent = getIntent();
+                    if(intent!=null){
+                        s_name = intent.getStringExtra("name");
+                    }
 
-                    Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLEDBS");
+                    veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + s_name + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
+
+                    Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLEDBS" + s_name);
                     mList.clear();
                     while(cursor.moveToNext()){
                         int id = cursor.getInt(0);

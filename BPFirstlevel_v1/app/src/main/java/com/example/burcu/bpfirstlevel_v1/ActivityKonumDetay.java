@@ -290,9 +290,33 @@ public class ActivityKonumDetay extends AppCompatActivity {
                         System.out.println(oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
 
                     }
-                    System.out.println("Count Sıralı : " + count);
 
-                }
+                    //////////////
+
+                    int max_count = 1, k=8,  curr_count = 1;
+                    String res = oklit_dizi[1][2];
+
+                    for (int i = 2; i <= k; i++) {
+                        if (oklit_dizi[i][2] == oklit_dizi[i - 1][2])
+                            curr_count++;
+                        else {
+                            if (curr_count > max_count) {
+                                max_count = curr_count;
+                                res = oklit_dizi[i - 1][2];
+                            }
+                            curr_count = 1;
+                        }
+
+                        System.out.println("RES : " + res + " Count1 : " + max_count);
+                    }
+
+                    System.out.println("RES : " + res + " Count : " + curr_count);
+
+//
+
+                    }
+
+
             });
 
 

@@ -37,7 +37,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
     ArrayList<Model3> mList;
     ArrayList<String> mList2;
     ArrayList<String> arrayList= new ArrayList<>();
-    ArrayList<String> arrayList2;
+
 
     String anlik_dizi[][];
     String db_dizi[][];
@@ -226,154 +226,66 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                 System.out.print("********************************************************************** \n");
 
-//                for(int i=1; i<count-1;i++){
-//
-//                    arrayList2.add(Integer.parseInt(oklit_dizi[i][0]) + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
-//
-//                                  }
+                System.out.println("SIRASIZ HAL");
+
+                for(int i =1; i<count;i++){
+
+//                   System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+                   System.out.println(oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+
+                }
+
+                System.out.println("Count : " + count);
+
+                    int t_level;
+                    String t_buttonId, t_hedef;
+                    boolean is_sorted;
+
+    //////////////////////////////////////////////////////////////// SIRLAMA
+                    for (int i = 1; i <= count; i++) {
+
+                        is_sorted = true;
+
+                        for (int j = 2; j <= (count - i); j++) {
+
+                            if (Integer.parseInt(oklit_dizi[j - 1][0]) > Integer.parseInt(oklit_dizi[j][0])) {
+
+                                t_level = Integer.parseInt(oklit_dizi[j - 1][0]);
+                                oklit_dizi[j - 1][0] = oklit_dizi[j][0];
+                                oklit_dizi[j][0] = String.valueOf(t_level);
+
+                                t_buttonId = oklit_dizi[j - 1][1];
+                                oklit_dizi[j - 1][1] = oklit_dizi[j][1];
+                                oklit_dizi[j][1] =t_buttonId;
+
+                                t_hedef = oklit_dizi[j - 1][2];
+                                oklit_dizi[j - 1][2] = oklit_dizi[j][2];
+                                oklit_dizi[j][2] = t_hedef;
+
+
+                                is_sorted = false;
+                            }
+
+                        }
+
+                        // is sorted? then break it, avoid useless loop.
+                        if (is_sorted) break;
+
+                        System.out.println("\n");
+
+                    }
+
+//////////////////////////////////////////////////////////////////////////
+
+                    System.out.println("SIRALI HAL");
 
                     for(int i =1; i<count;i++){
 
-                        System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+//                   System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+                        System.out.println(oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
 
                     }
-
-                //    System.out.println("Oklıt Dızısı ılk eleman : " + oklit_dizi[1][0] + " - " + oklit_dizi[1][1] + " - " + oklit_dizi[1][2]);
-                    System.out.println("Count : " + count);
-
-                    sirali_dizi[0][0] = oklit_dizi[1][0];
-                    sirali_dizi[0][1] = oklit_dizi[1][1];
-                    sirali_dizi[0][2] = oklit_dizi[1][2];
-
-                    for(int i = 0; i<count-2;i++){
-
-                        System.out.println("iii : " + i);
-
-                        String s_level = sirali_dizi[i][0]; // 0
-                        String s_level2 = oklit_dizi[i+2][0]; // 1
-
-                        System.out.println("ssssss 1 :  " + s_level);
-                        System.out.println("ssssss 2 :  " + s_level2);
-
-                        int t = Integer.parseInt(s_level);
-                        int t2 = Integer.parseInt(s_level2);
-
-                        System.out.println("tttttttttttttttt 1 :  " + t);
-                        System.out.println("tttttttttttttttt 2 :  " + t2);
-
-                        if( (t) > (t2) ){
-
-                            System.out.println("nul : " + Integer.parseInt(sirali_dizi[i][0]) + " null : " + Integer.parseInt(oklit_dizi[i+1][0]));
-
-                            String t_level, t_buttonId, t_hedef;
-
-                            t_level = sirali_dizi[i][0]; // 8
-                            sirali_dizi[i][0] = oklit_dizi[i+2][0]; // 5
-                            sirali_dizi[i+1][0] = t_level; // 8
-
-                            t_buttonId = sirali_dizi[i][1];
-                            sirali_dizi[i][1] = oklit_dizi[i+2][1];
-                            sirali_dizi[i+1][1] = t_buttonId;
-
-                            t_hedef = sirali_dizi[i][0];
-                            sirali_dizi[i][2] = oklit_dizi[i+2][2];
-                            sirali_dizi[i+1][2] = t_hedef;
-
-
-                        }
-                        else{
-
-
-                            sirali_dizi[i+1][0] = oklit_dizi[i+2][0];
-                            sirali_dizi[i+1][1] = oklit_dizi[i+2][1];
-                            sirali_dizi[i+1][2] = oklit_dizi[i+2][2];
-
-                        }
-
-                       // System.out.println("Sıralı Dizi  : " + sirali_dizi[i][0] + " But : " + sirali_dizi[i][1] + " hedef : " + sirali_dizi[i][2]);
-                    }
-
-
-
-
-                    for(int i = 0; i<sirali_dizi.length;i++) {
-                        // System.out.println("Arraylist 2 : " + arrayList2.get(i));
-                       // Collections.sort(arrayList2);
-                        System.out.println("Sıralı Dizi  : " + sirali_dizi[i][0] + " But : " + sirali_dizi[i][1] + " hedef : " + sirali_dizi[i][2]);
-                    }
-
-
-
-               // System.out.println("oklıd boyut : " + oklit_dizi.length + " Arraylist boyut : " + arrayList2.size());
-
-
-
-//                    int a=1, bir, iki;
-//
-//                    while (a != oklit_dizi.length-1 ){
-//
-//                            bir = Integer.parseInt(oklit_dizi[a][0]);
-//                            iki = Integer.parseInt(oklit_dizi[a+1][0]);
-//
-//                            if (bir > iki){
-//
-//                                String t_level, t_butonId, t_hedefKonum ;
-//
-//                                System.out.println("ONCE BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
-//                                        " Birinci HEDEF : " + oklit_dizi[a][2]);
-//
-//                                System.out.println("ONCE İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
-//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
-//
-//
-//                                System.out.println(" TEST : " + oklit_dizi[a][0] + " iki : " + oklit_dizi[a+1][0]);
-//
-//                                t_level = oklit_dizi[a+1][0];;
-//                                oklit_dizi[a+1][0] = oklit_dizi[a][0];
-//                                oklit_dizi[a][0] = t_level;
-//
-//                                t_butonId = oklit_dizi[a+1][1];;
-//                                oklit_dizi[a+1][1] = oklit_dizi[a][1];
-//                                oklit_dizi[a][1] = t_butonId;
-//
-//                                t_hedefKonum = oklit_dizi[a+1][2];;
-//                                oklit_dizi[a+1][2] = oklit_dizi[a][2];
-//                                oklit_dizi[a][2] = t_hedefKonum;
-//
-//
-//                                System.out.println("TAMPON BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
-//                                " Birinci HEDEF : " + oklit_dizi[a][2]);
-//
-//                                System.out.println("TAMPON İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
-//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
-//
-//
-//                            }else if(bir < iki){
-//                                System.out.println(" TEST : " + oklit_dizi[a][0] + " iki : " + oklit_dizi[a+1][0]);
-//                                System.out.println("DEGISMEYEN BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
-//                                        " Birinci HEDEF : " + oklit_dizi[a][2]);
-//
-//                                System.out.println("DEGISMEYEN İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
-//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
-//
-//                            }
-//                            else if(bir == iki){
-//                                System.out.println(" TEST : " + oklit_dizi[a][0] + " iki : " + oklit_dizi[a+1][0]);
-//                                System.out.println("EŞİT BİR: " + " Birinci Level: " + oklit_dizi[a][0] + " Birinci BUTONID : " + oklit_dizi[a][1] +
-//                                        " Birinci HEDEF : " + oklit_dizi[a][2]);
-//
-//                                System.out.println("EŞİT İKİ: " + " İkinci Level: " + oklit_dizi[a+1][0] + " İkinci BUTONID : " + oklit_dizi[a+1][1] +
-//                                        " İkinci HEDEF : " + oklit_dizi[a+1][2]);
-//                            }
-//
-//                        a++;
-//                        String.valueOf(bir);
-//                        String.valueOf(iki);
-//                    }
-
-
-
-
+                    System.out.println("Count Sıralı : " + count);
 
                 }
             });

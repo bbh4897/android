@@ -42,11 +42,15 @@ public class WLevelList extends AppCompatActivity {
         veritabani = new Veritabani(this, "Bitirmedb.sqlite", null, 1 );
 
         mList2 = new ArrayList<>();
+
                 btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
+                extras = getIntent().getExtras();
+                String KONUMAD = extras.getString("KonumAd2");
+
+                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + KONUMAD + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
 
                 extras = getIntent().getExtras();
                 String hedefKonum = extras.getString("hedefKonum");
@@ -60,7 +64,8 @@ public class WLevelList extends AppCompatActivity {
 
                 for (int i = 0; i < mList2.size(); i++) {
 
-                   veritabani.insertWifis(mList2.get(i));
+
+                   veritabani.insertWifis(mList2.get(i), KONUMAD);
                 }
 
                 for (int k = 0; k < mList2.size(); k++) {
@@ -74,9 +79,14 @@ public class WLevelList extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
         public void onClick(View v) {
-            veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + "(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
+
+                extras = getIntent().getExtras();
+                String KONUMAD = extras.getString("KonumAd2");
+
+                veritabani.queryData("CREATE TABLE IF NOT EXISTS TABLEDBS" + KONUMAD +"(id INTEGER PRIMARY KEY AUTOINCREMENT, wifis VARCHAR)");
 
             Intent intent_levet = new Intent(WLevelList.this, ActivityTopluDbListe.class);
+            intent_levet.putExtra("KonumAd2", KONUMAD);
             startActivity(intent_levet);
 
         }

@@ -99,10 +99,10 @@ public class Veritabani extends SQLiteOpenHelper {
 
     }
 
-    public void insertWifis(String wifis){
+    public void insertWifis(String wifis, String KONUMAD){
 
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO TABLEDBS VALUES(NULL, ?)";
+        String sql = "INSERT INTO TABLEDBS" + KONUMAD +" VALUES(NULL, ?)";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
         statement.bindString(1, wifis);

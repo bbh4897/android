@@ -18,6 +18,9 @@ public class ActivityTopluDbListe extends AppCompatActivity {
     ArrayList<Model3> mList;
     WTopluListAdapter adapter = null;
 
+    private Bundle extras;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +34,10 @@ public class ActivityTopluDbListe extends AppCompatActivity {
         adapter = new WTopluListAdapter(this, R.layout.row3, mList);
         listView.setAdapter(adapter);
 
+        extras = getIntent().getExtras();
+        String KONUMAD = extras.getString("KonumAd2");
 
-        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLEDBS");
+        Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM TABLEDBS" + KONUMAD);
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);

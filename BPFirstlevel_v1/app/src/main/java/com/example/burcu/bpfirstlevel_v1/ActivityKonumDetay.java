@@ -323,6 +323,23 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     }
                     System.out.println("Number of Strings repeated : " + c + " konum  : " + repeatationMap.toString());
 
+                    Map.Entry<String, Integer> firstEntry = repeatationMap.entrySet().iterator().next();
+
+                    String largestKey = firstEntry.getKey();
+                    int largestKeyValue = firstEntry.getValue();
+
+                    for (Map.Entry<String, Integer> map : repeatationMap.entrySet()) {
+
+                        int value = map.getValue();
+                        if (value > largestKeyValue) {
+                            largestKeyValue = value;
+                            largestKey = map.getKey();
+                        }
+                    }
+
+                    System.out.println("Largest Key       : " + largestKey);
+                    System.out.println("Largest Key Value : " + largestKeyValue);
+
                  }
 
 

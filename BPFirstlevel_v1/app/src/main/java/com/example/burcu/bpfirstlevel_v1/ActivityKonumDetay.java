@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -36,10 +37,12 @@ public class ActivityKonumDetay extends AppCompatActivity {
     ArrayList<Model3> mList;
     ArrayList<String> mList2;
     ArrayList<String> arrayList= new ArrayList<>();
+    ArrayList<String> arrayList2;
 
     String anlik_dizi[][];
     String db_dizi[][];
     String oklit_dizi[][];
+    String sirali_dizi[][];
 
 
     public WifiManager wifiManager;
@@ -116,7 +119,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
     BroadcastReceiver wifiReceiver = new BroadcastReceiver() {
         @Override
-        public void onReceive(Context context, Intent intent) {
+        public void onReceive(final Context context, Intent intent) {
             results = wifiManager.getScanResults();
             unregisterReceiver(this);
 
@@ -178,6 +181,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                 int count=1;
                 oklit_dizi = new String[70][3];
+                sirali_dizi = new String[70][3];
 
                 for(int a=0; a<anlik_dizi.length;a++){
                     for(int b=0; b<db_dizi.length;b++) {
@@ -219,13 +223,90 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     }
                 }
 
-                for(int i=1; i<count;i++){
-                    System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+
+                System.out.print("********************************************************************** \n");
+
+//                for(int i=1; i<count-1;i++){
+//
+//                    arrayList2.add(Integer.parseInt(oklit_dizi[i][0]) + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+//
+//                                  }
+
+                    for(int i =1; i<count;i++){
+
+                        System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+
+                    }
+
+                //    System.out.println("Oklıt Dızısı ılk eleman : " + oklit_dizi[1][0] + " - " + oklit_dizi[1][1] + " - " + oklit_dizi[1][2]);
+                    System.out.println("Count : " + count);
+
+                    sirali_dizi[0][0] = oklit_dizi[1][0];
+                    sirali_dizi[0][1] = oklit_dizi[1][1];
+                    sirali_dizi[0][2] = oklit_dizi[1][2];
+
+                    for(int i = 0; i<count-2;i++){
+
+                        System.out.println("iii : " + i);
+
+                        String s_level = sirali_dizi[i][0]; // 0
+                        String s_level2 = oklit_dizi[i+2][0]; // 1
+
+                        System.out.println("ssssss 1 :  " + s_level);
+                        System.out.println("ssssss 2 :  " + s_level2);
+
+                        int t = Integer.parseInt(s_level);
+                        int t2 = Integer.parseInt(s_level2);
+
+                        System.out.println("tttttttttttttttt 1 :  " + t);
+                        System.out.println("tttttttttttttttt 2 :  " + t2);
+
+                        if( (t) > (t2) ){
+
+                            System.out.println("nul : " + Integer.parseInt(sirali_dizi[i][0]) + " null : " + Integer.parseInt(oklit_dizi[i+1][0]));
+
+                            String t_level, t_buttonId, t_hedef;
+
+                            t_level = sirali_dizi[i][0]; // 8
+                            sirali_dizi[i][0] = oklit_dizi[i+2][0]; // 5
+                            sirali_dizi[i+1][0] = t_level; // 8
+
+                            t_buttonId = sirali_dizi[i][1];
+                            sirali_dizi[i][1] = oklit_dizi[i+2][1];
+                            sirali_dizi[i+1][1] = t_buttonId;
+
+                            t_hedef = sirali_dizi[i][0];
+                            sirali_dizi[i][2] = oklit_dizi[i+2][2];
+                            sirali_dizi[i+1][2] = t_hedef;
 
 
-                }
+                        }
+                        else{
 
-                    System.out.print("********************************************************************** \n");
+
+                            sirali_dizi[i+1][0] = oklit_dizi[i+2][0];
+                            sirali_dizi[i+1][1] = oklit_dizi[i+2][1];
+                            sirali_dizi[i+1][2] = oklit_dizi[i+2][2];
+
+                        }
+
+                       // System.out.println("Sıralı Dizi  : " + sirali_dizi[i][0] + " But : " + sirali_dizi[i][1] + " hedef : " + sirali_dizi[i][2]);
+                    }
+
+
+
+
+                    for(int i = 0; i<sirali_dizi.length;i++) {
+                        // System.out.println("Arraylist 2 : " + arrayList2.get(i));
+                       // Collections.sort(arrayList2);
+                        System.out.println("Sıralı Dizi  : " + sirali_dizi[i][0] + " But : " + sirali_dizi[i][1] + " hedef : " + sirali_dizi[i][2]);
+                    }
+
+
+
+               // System.out.println("oklıd boyut : " + oklit_dizi.length + " Arraylist boyut : " + arrayList2.size());
+
+
 
 //                    int a=1, bir, iki;
 //
@@ -294,7 +375,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
 
 
-             }
+                }
             });
 
 

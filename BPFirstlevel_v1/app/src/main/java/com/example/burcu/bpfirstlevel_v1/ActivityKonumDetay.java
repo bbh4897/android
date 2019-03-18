@@ -340,11 +340,16 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     System.out.println("Largest Key       : " + largestKey);
                     System.out.println("Largest Key Value : " + largestKeyValue);
 
+                    Toast.makeText(ActivityKonumDetay.this, "Şu an " + largestKey + " 'dasınız." , Toast.LENGTH_LONG).show();
+
+                    for(int i=1; i<oklit_dizi.length;i++){
+                        if(largestKey.equals(oklit_dizi[i][2])){
+                            Button b = (Button)findViewById(Integer.parseInt(oklit_dizi[i][1]));
+                            b.setBackgroundColor(b.getContext().getResources().getColor(R.color.red));
+                        }
+                    }
+
                  }
-
-
-
-
             });
 
 

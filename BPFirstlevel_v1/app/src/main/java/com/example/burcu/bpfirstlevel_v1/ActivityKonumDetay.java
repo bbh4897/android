@@ -24,7 +24,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ActivityKonumDetay extends AppCompatActivity {
 
@@ -42,7 +44,6 @@ public class ActivityKonumDetay extends AppCompatActivity {
     String anlik_dizi[][];
     String db_dizi[][];
     String oklit_dizi[][];
-    String sirali_dizi[][];
 
 
     public WifiManager wifiManager;
@@ -186,7 +187,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                 int count=1;
                 oklit_dizi = new String[70][3];
-                sirali_dizi = new String[70][3];
+
 
                 for(int a=0; a<anlik_dizi.length;a++){
                     for(int b=0; b<db_dizi.length;b++) {
@@ -291,30 +292,40 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                     }
 
-                    //////////////
+                    System.out.println("İLK 7");
 
-                    int max_count = 1, k=8,  curr_count = 1;
-                    String res = oklit_dizi[1][2];
+                    for(int i =1; i<=7;i++){
 
-                    for (int i = 2; i <= k; i++) {
-                        if (oklit_dizi[i][2] == oklit_dizi[i - 1][2])
-                            curr_count++;
-                        else {
-                            if (curr_count > max_count) {
-                                max_count = curr_count;
-                                res = oklit_dizi[i - 1][2];
-                            }
-                            curr_count = 1;
+//                   System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+                        System.out.println(oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
+
+                    }
+
+                    ////////////// HEDEF KONUMU FAZLA OLANI BULMA
+
+                    int k=7;
+                    Map<String,Integer> repeatationMap= new HashMap<String,Integer>();
+                    for(int i=1; i<=k ;i++){
+
+                        if(repeatationMap.containsKey(oklit_dizi[i][2])) {
+                            repeatationMap.put(oklit_dizi[i][2],repeatationMap.get(oklit_dizi[i][2]) + 1);
                         }
-
-                        System.out.println("RES : " + res + " Count1 : " + max_count);
+                        else {
+                            repeatationMap.put(oklit_dizi[i][2], 1);
+                        }
                     }
 
-                    System.out.println("RES : " + res + " Count : " + curr_count);
-
-//
-
+                    int c = 0;
+                    for(int repatCount : repeatationMap.values()){
+                        if(repatCount > 1) {
+                            c++;
+                        }
                     }
+                    System.out.println("Number of Strings repeated : " + c + " konum  : " + repeatationMap.toString());
+
+                 }
+
+
 
 
             });

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/konum_bg_10"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".Activity_KonumBilgiGiris">
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Konum Planını Giriniz.."
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/koyu_gri"
         android:textSize="18sp" />
 
     <ImageView

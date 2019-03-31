@@ -33,21 +33,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TableRow>
+
                     <TextView
-                        android:text="Konum Adı: "
-                        android:textSize="20sp"
-                        android:textColor="#000"
-                        android:textStyle="bold"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Konum Adı: "
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtName"
-                        android:text="Konum Adı Alanı: "
-                        android:textSize="20sp"
-                        android:textColor="#000"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Konum"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
 
                 </TableRow>
             </TableLayout>

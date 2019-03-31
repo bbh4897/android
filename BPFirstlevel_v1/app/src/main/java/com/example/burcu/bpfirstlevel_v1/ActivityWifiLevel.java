@@ -52,7 +52,7 @@ public class ActivityWifiLevel extends AppCompatActivity {
         setContentView(R.layout.activity_wifi_level);
 
         ActionBar actionBar  =getSupportActionBar();
-        actionBar.setTitle("Wifi Level");
+        actionBar.setTitle("Wifi İz Kayıt");
 
         btn = findViewById(R.id.btn_wifiscan);
         btn2 = findViewById(R.id.btn_wifilevel);

@@ -25,6 +25,7 @@
         android:id="@+id/textView2"
         android:layout_width="323dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="Konum Planını Giriniz.."
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp" />
@@ -33,19 +34,32 @@
         android:id="@+id/imageView"
         android:layout_width="320dp"
         android:layout_height="247dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/imageview_background" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kaydet" />
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Liste" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_tema"
+            android:text="Kaydet"
+            android:textColor="@android:color/background_light" />
 
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button_tema2"
+            android:text="Listele"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
 </LinearLayout>

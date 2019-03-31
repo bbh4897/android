@@ -74,6 +74,7 @@ public class Activity_KonumBilgiGiris extends AppCompatActivity {
 
                     veritabani.insertData(editText.getText().toString().trim(), imageViewToByte(imImageView));
                     Snackbar.make(v, "Veri Eklendi", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    imImageView.setImageResource(R.drawable.imageview_background);
                     editText.setText("");
                    // imImageView.setImageResources(R.drawable.imageview_background);
                 } catch (Exception e) {

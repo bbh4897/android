@@ -70,7 +70,7 @@ public class ActivityWifiListe extends AppCompatActivity {
             unregisterReceiver(this);
 
             for(ScanResult scanResult : results){
-                arrayList.add(scanResult.SSID + " - " + scanResult.BSSID + " ** " + scanResult.level + " - " + scanResult.frequency);
+                arrayList.add(scanResult.SSID + " / " + scanResult.BSSID + " / " + scanResult.level + " / " + scanResult.frequency);
                 adapter.notifyDataSetChanged();
             }
 

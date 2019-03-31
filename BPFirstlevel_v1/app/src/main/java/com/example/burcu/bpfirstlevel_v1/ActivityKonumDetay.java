@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -147,6 +148,11 @@ public class ActivityKonumDetay extends AppCompatActivity {
                         String wifis = cursor.getString(1);
                         mList.add(new Model3(id, wifis)); // toplu olarak hedef konum verılerı
                     }
+                    if(mList.size()==0){
+                        Snackbar.make(v, "Daha Önce Burada Bulunmadınız!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    }
+                else{
+
 
                 for(int i=0; i<mList.size();i++){
 //                    System.out.println(" KONUM BUL : " + mList.get(i).getWifis().substring(20,22));
@@ -349,6 +355,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                         }
                     }
 
+                    }
                  }
             });
 

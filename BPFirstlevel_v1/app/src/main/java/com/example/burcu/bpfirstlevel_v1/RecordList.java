@@ -92,7 +92,7 @@ public class RecordList extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long l) {
 
-                final CharSequence[] items = {"Guncelle", "Sil"};
+                final CharSequence[] items = {"Güncelle", "Sil"};
                 AlertDialog.Builder dialog = new AlertDialog.Builder(RecordList.this);
                 dialog.setTitle("İşlem Seçiniz");
                 dialog.setItems(items, new DialogInterface.OnClickListener() {
@@ -164,7 +164,7 @@ public class RecordList extends AppCompatActivity {
 
         final Dialog dialog = new Dialog(activity);
         dialog.setContentView(R.layout.update_dialog);
-        dialog.setTitle("Guncelle");
+        dialog.setTitle("Güncelle");
 
         imgIcon = dialog.findViewById(R.id.ImageViewRecord);
         final EditText edtName = dialog.findViewById(R.id.edtName);

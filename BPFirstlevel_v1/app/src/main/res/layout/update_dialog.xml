@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@mipmap/konum_bg_10"
     android:padding="10dp">
 
     <ImageView
         android:id="@+id/ImageViewRecord"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@mipmap/resetimg" />
 
 
@@ -24,9 +24,12 @@
 
     <Button
         android:id="@+id/btnUpdate"
-        android:text="Güncelle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_tema2"
+        android:text="Güncelle"
+        android:textColor="@android:color/background_light" />
 
 
 

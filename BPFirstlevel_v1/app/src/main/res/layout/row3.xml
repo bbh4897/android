@@ -27,7 +27,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TOPLU W.IZLERI: "
                     android:textColor="#000"
                     android:textSize="13sp"
                     android:textStyle="bold" />

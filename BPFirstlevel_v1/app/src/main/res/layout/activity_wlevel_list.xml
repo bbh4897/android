@@ -38,7 +38,8 @@
             android:layout_height="50dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/button_tema"
-            android:text="Kaydet" />
+            android:text="Kaydet"
+            android:textColor="@android:color/background_light" />
 
         <Button
             android:id="@+id/btn_topluDbliste"
@@ -46,7 +47,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="5dp"
             android:background="@drawable/button_tema2"
-            android:text="Listele" />
+            android:text="Listele"
+            android:textColor="@android:color/background_light" />
     </LinearLayout>
 </LinearLayout>
 

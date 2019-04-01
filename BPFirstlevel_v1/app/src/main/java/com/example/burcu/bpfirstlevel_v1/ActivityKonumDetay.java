@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.support.design.widget.Snackbar;
@@ -351,7 +352,9 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     for(int i=1; i<oklit_dizi.length;i++){
                         if(largestKey.equals(oklit_dizi[i][2])){
                             Button b = (Button)findViewById(Integer.parseInt(oklit_dizi[i][1]));
-                            b.setBackgroundColor(b.getContext().getResources().getColor(R.color.red));
+                            Drawable d = getResources().getDrawable(R.drawable.button_konum_bul);
+                            //b.setBackgroundColor(b.getContext().getResources().getColor(R.color.green_konum));
+                            b.setBackground(d);
                         }
                     }
 

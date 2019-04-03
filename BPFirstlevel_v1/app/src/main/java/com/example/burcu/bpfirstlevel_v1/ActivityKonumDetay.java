@@ -195,8 +195,9 @@ public class ActivityKonumDetay extends AppCompatActivity {
                 int count=1;
                 oklit_dizi = new String[70][3];
 
-
+                int oklit=0;
                 for(int a=0; a<anlik_dizi.length;a++){
+
                     for(int b=0; b<db_dizi.length;b++) {
 
                         if (anlik_dizi[a][0].equals(db_dizi[b][0])) {
@@ -207,7 +208,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
 
                             int level = Integer.parseInt(db_dizi[b][1]);
-                            int oklit = ( (Integer.parseInt(anlik_dizi[a][1])) - (Integer.parseInt(db_dizi[b][1])) );
+                            oklit = ( (Integer.parseInt(anlik_dizi[a][1])) - (Integer.parseInt(db_dizi[b][1])) );
 
                             System.out.println("OKLIT SONUC : " + oklit);
 
@@ -233,7 +234,52 @@ public class ActivityKonumDetay extends AppCompatActivity {
                             count++;
 
                         }
+
+
+
                     }
+
+                    int t_level;
+                    String t_buttonId, t_hedef;
+                    boolean is_sorted;
+
+                    //////////////////////////////////////////////////////////////// SIRLAMA
+                    for (int i = 1; i <= count; i++) {
+
+                        is_sorted = true;
+
+                        for (int j = 2; j <= (count - i); j++) {
+
+                            if (Integer.parseInt(oklit_dizi[j - 1][0]) > Integer.parseInt(oklit_dizi[j][0])) {
+
+                                t_level = Integer.parseInt(oklit_dizi[j - 1][0]);
+                                oklit_dizi[j - 1][0] = oklit_dizi[j][0];
+                                oklit_dizi[j][0] = String.valueOf(t_level);
+
+                                t_buttonId = oklit_dizi[j - 1][1];
+                                oklit_dizi[j - 1][1] = oklit_dizi[j][1];
+                                oklit_dizi[j][1] =t_buttonId;
+
+                                t_hedef = oklit_dizi[j - 1][2];
+                                oklit_dizi[j - 1][2] = oklit_dizi[j][2];
+                                oklit_dizi[j][2] = t_hedef;
+
+
+                                is_sorted = false;
+                            }
+
+                        }
+
+                        // is sorted? then break it, avoid useless loop.
+                        if (is_sorted) break;
+
+                        System.out.println("\n");
+
+                    }
+
+                    oklit_dizi[a+1][0] = oklit_dizi[1][0];
+                    oklit_dizi[a+1][1] = oklit_dizi[1][1];
+                    oklit_dizi[a+1][2] = oklit_dizi[1][2];
                 }
 
 
@@ -301,7 +347,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                     System.out.println("İLK 7");
 
-                    for(int i =1; i<=7;i++){
+                    for(int i =1; i<=13;i++){
 
 //                   System.out.println("Oklıt Dızısı SONN : " + oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
                         System.out.println(oklit_dizi[i][0] + " - " + oklit_dizi[i][1] + " - " + oklit_dizi[i][2]);
@@ -310,7 +356,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                     ////////////// HEDEF KONUMU FAZLA OLANI BULMA
 
-                    int k=7;
+                    int k=13;
                     Map<String,Integer> repeatationMap= new HashMap<String,Integer>();
                     for(int i=1; i<=k ;i++){
 
@@ -347,9 +393,11 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     System.out.println("Largest Key       : " + largestKey);
                     System.out.println("Largest Key Value : " + largestKeyValue);
 
-                    Toast.makeText(ActivityKonumDetay.this, "Şu an " + largestKey + " 'dasınız." , Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ActivityKonumDetay.this, "Şu an " + largestKey + " 'dasınız." , Toast.LENGTH_LONG).show();
 
-                    for(int i=1; i<oklit_dizi.length;i++){
+                    Snackbar.make(v, "Şu an " + largestKey + " 'dasınız.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                        for(int i=1; i<oklit_dizi.length;i++){
                         if(largestKey.equals(oklit_dizi[i][2])){
                             Button b = (Button)findViewById(Integer.parseInt(oklit_dizi[i][1]));
                             Drawable d = getResources().getDrawable(R.drawable.button_konum_bul);

@@ -158,25 +158,27 @@ public class ActivityKonumDetay extends AppCompatActivity {
                 for(int i=0; i<mList.size();i++){
 //                    System.out.println(" KONUM BUL : " + mList.get(i).getWifis().substring(20,22));
                     mList2.add(mList.get(i).getWifis());
-                    System.out.println("DB'deki Wifi Izlerı :    " + mList2.get(i));
+                    //System.out.println("DB'deki Wifi Izlerı :    " + mList2.get(i));
                 }
 
                 for(int y=0; y<arrayList.size();y++) {
-                    System.out.println("Anlık Wifi İzleri : " + arrayList.get(y));
+                    //System.out.println("Anlık Wifi İzleri : " + arrayList.get(y));
                 }
 
                 anlik_dizi = new String[arrayList.size()][2];
                 db_dizi = new String[mList2.size()][4];
 
 
+                System.out.println("ANLIK DİZİ ELEMANLARI \n");
                 for(int i=0;i<anlik_dizi.length;i++) {
 
                     anlik_dizi[i][0] = arrayList.get(i).substring(0,17);
                     anlik_dizi[i][1] = arrayList.get(i).substring(21,23);
-                    System.out.println("ANLIK DİZİ ELEMANLARI BSSID : " + anlik_dizi[i][0]);
-                    System.out.println("ANLIK DİZİ ELEMANLARI LEVEL : " + anlik_dizi[i][1]);
+                    System.out.println("BSSID : " + anlik_dizi[i][0] + " Level : " + anlik_dizi[i][1] );
 
                 }
+
+                System.out.println("DB DİZİ ELEMANLARI \n");
 
                 for(int i=0;i<db_dizi.length;i++) {
 
@@ -184,10 +186,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     db_dizi[i][1] = mList2.get(i).substring(20,22);
                     db_dizi[i][2] = mList2.get(i).substring(25,35);
                     db_dizi[i][3] = mList2.get(i).substring(38);
-                    System.out.println("DB DİZİ ELEMANLARI BSSID : " + db_dizi[i][0]);
-                    System.out.println("DB DİZİ ELEMANLARI LEVEL : " + db_dizi[i][1]);
-                    System.out.println("DB DİZİ ELEMANLARI BUTONID : " + db_dizi[i][2]);
-                    System.out.println("DB DİZİ ELEMANLARI HEDEF KONUM : " + db_dizi[i][3]);
+                    System.out.println("BSSID : " + db_dizi[i][0] + " LEVEL : " +  db_dizi[i][1] + " BUTTONID : " + db_dizi[i][2] + " HEDEF KONUM : " + db_dizi[i][3]);
 
                 }
 
@@ -203,14 +202,14 @@ public class ActivityKonumDetay extends AppCompatActivity {
                         if (anlik_dizi[a][0].equals(db_dizi[b][0])) {
 
 
-                            System.out.println("AYNI BSSID : " + db_dizi[b][0] + " LEvel ANlık :  " + anlik_dizi[a][1] +
-                                    " LEVEL DB : " + db_dizi[b][1] + " BUTONID: " + db_dizi[b][2] + " HEDEF KONUM : " + db_dizi[b][3] + " BOYUT : " + count );
+                            System.out.println("AYNI BSSID : " + db_dizi[b][0] + " LEVEL ANLIK :  " + anlik_dizi[a][1] +
+                                    " LEVEL DB : " + db_dizi[b][1] + " BUTONID : " + db_dizi[b][2] + " HEDEF KONUM : " + db_dizi[b][3] + " BOYUT : " + count );
 
 
                             int level = Integer.parseInt(db_dizi[b][1]);
                             oklit = ( (Integer.parseInt(anlik_dizi[a][1])) - (Integer.parseInt(db_dizi[b][1])) );
 
-                            System.out.println("OKLIT SONUC : " + oklit);
+                            //System.out.println("OKLIT SONUC : " + oklit);
 
                             if(oklit<0){
                                 oklit = oklit * (-1);
@@ -218,7 +217,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                                 oklit_dizi[count][0] = s_oklit;
                                 oklit_dizi[count][1] = db_dizi[b][2];
                                 oklit_dizi[count][2] = db_dizi[b][3];
-                                System.out.println("Oklit Sonuc: ");
+                                System.out.println("Oklit Sonuc \n");
                                 System.out.println("LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1]  + " HEDEF : " +oklit_dizi[count][2]);
                             }
                             else{
@@ -226,7 +225,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                                 oklit_dizi[count][0] = s_oklit;
                                 oklit_dizi[count][1] = db_dizi[b][2];
                                 oklit_dizi[count][2] = db_dizi[b][3];
-                                System.out.println("Oklit Sonuc: ");
+                                System.out.println("Oklit Sonuc \n");
                                 System.out.println("LEVEL : " +  oklit_dizi[count][0] + " BUTONID : " + oklit_dizi[count][1]  + " HEDEF : " +oklit_dizi[count][2]);
                             }
 
@@ -285,7 +284,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                 System.out.print("********************************************************************** \n");
 
-                System.out.println("SIRASIZ HAL");
+                System.out.println("SIRASIZ HAL \n");
 
                 for(int i =1; i<count;i++){
 
@@ -300,7 +299,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     String t_buttonId, t_hedef;
                     boolean is_sorted;
 
-    //////////////////////////////////////////////////////////////// SIRLAMA
+    //////////////////////////////////////////////////////////////// SIRALAMA BALONCUK
                     for (int i = 1; i <= count; i++) {
 
                         is_sorted = true;
@@ -336,7 +335,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
 //////////////////////////////////////////////////////////////////////////
 
-                    System.out.println("SIRALI HAL");
+                    System.out.println("SIRALI HAL \n");
 
                     for(int i =1; i<count;i++){
 
@@ -345,7 +344,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                     }
 
-                    System.out.println("İLK K");
+                    System.out.println("İLK K \n");
 
                     for(int i =1; i<=13;i++){
 
@@ -374,7 +373,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                             c++;
                         }
                     }
-                    System.out.println("Tekrar Eden Konum Sayısı : " + c + " Tekrar Eden Konumlar  : " + tekrarMap.toString());
+                    System.out.println("\nTekrar Eden Konum Sayısı : " + c + " Tekrar Eden Konumlar  : " + tekrarMap.toString());
 
                     Map.Entry<String, Integer> ilkVeri = tekrarMap.entrySet().iterator().next();
 
@@ -390,12 +389,12 @@ public class ActivityKonumDetay extends AppCompatActivity {
                         }
                     }
 
-                    System.out.println("En çok bulunan Konum       : " + encokKey);
-                    System.out.println("En çok bulunan Konum Sayısı : " + encokValue);
+                    System.out.println("\nEn çok bulunan Konum       : " + encokKey);
+                    System.out.println("\nEn çok bulunan Konum Sayısı : " + encokValue);
 
                     //Toast.makeText(ActivityKonumDetay.this, "Şu an " + largestKey + " 'dasınız." , Toast.LENGTH_LONG).show();
 
-                    Snackbar.make(v, "Şu an " + encokKey + " 'dasınız.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    Snackbar.make(v, "\nŞu an " + encokKey + " 'dasınız.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                         for(int i=1; i<oklit_dizi.length;i++){
                         if(encokKey.equals(oklit_dizi[i][2])){

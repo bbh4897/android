@@ -374,7 +374,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
                             c++;
                         }
                     }
-                    System.out.println("Tekrar eden Sayı : " + c + " Tekrar eden Konum  : " + tekrarMap.toString());
+                    System.out.println("Tekrar Eden Konum Sayısı : " + c + " Tekrar Eden Konumlar  : " + tekrarMap.toString());
 
                     Map.Entry<String, Integer> ilkVeri = tekrarMap.entrySet().iterator().next();
 

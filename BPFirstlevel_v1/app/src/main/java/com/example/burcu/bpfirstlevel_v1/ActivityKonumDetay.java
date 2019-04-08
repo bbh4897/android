@@ -345,7 +345,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
                     }
 
-                    System.out.println("İLK 7");
+                    System.out.println("İLK K");
 
                     for(int i =1; i<=13;i++){
 
@@ -357,48 +357,48 @@ public class ActivityKonumDetay extends AppCompatActivity {
                     ////////////// HEDEF KONUMU FAZLA OLANI BULMA
 
                     int k=13;
-                    Map<String,Integer> repeatationMap= new HashMap<String,Integer>();
+                    Map<String,Integer> tekrarMap= new HashMap<String,Integer>();
                     for(int i=1; i<=k ;i++){
 
-                        if(repeatationMap.containsKey(oklit_dizi[i][2])) {
-                            repeatationMap.put(oklit_dizi[i][2],repeatationMap.get(oklit_dizi[i][2]) + 1);
+                        if(tekrarMap.containsKey(oklit_dizi[i][2])) {
+                            tekrarMap.put(oklit_dizi[i][2],tekrarMap.get(oklit_dizi[i][2]) + 1);
                         }
                         else {
-                            repeatationMap.put(oklit_dizi[i][2], 1);
+                            tekrarMap.put(oklit_dizi[i][2], 1);
                         }
                     }
 
                     int c = 0;
-                    for(int repatCount : repeatationMap.values()){
-                        if(repatCount > 1) {
+                    for(int tekrarCount : tekrarMap.values()){
+                        if(tekrarCount > 1) {
                             c++;
                         }
                     }
-                    System.out.println("Number of Strings repeated : " + c + " konum  : " + repeatationMap.toString());
+                    System.out.println("Tekrar eden Sayı : " + c + " Tekrar eden Konum  : " + tekrarMap.toString());
 
-                    Map.Entry<String, Integer> firstEntry = repeatationMap.entrySet().iterator().next();
+                    Map.Entry<String, Integer> ilkVeri = tekrarMap.entrySet().iterator().next();
 
-                    String largestKey = firstEntry.getKey();
-                    int largestKeyValue = firstEntry.getValue();
+                    String encokKey = ilkVeri.getKey();
+                    int encokValue = ilkVeri.getValue();
 
-                    for (Map.Entry<String, Integer> map : repeatationMap.entrySet()) {
+                    for (Map.Entry<String, Integer> map : tekrarMap.entrySet()) {
 
                         int value = map.getValue();
-                        if (value > largestKeyValue) {
-                            largestKeyValue = value;
-                            largestKey = map.getKey();
+                        if (value > encokValue) {
+                            encokValue = value;
+                            encokKey = map.getKey();
                         }
                     }
 
-                    System.out.println("Largest Key       : " + largestKey);
-                    System.out.println("Largest Key Value : " + largestKeyValue);
+                    System.out.println("En çok bulunan Konum       : " + encokKey);
+                    System.out.println("En çok bulunan Konum Sayısı : " + encokValue);
 
                     //Toast.makeText(ActivityKonumDetay.this, "Şu an " + largestKey + " 'dasınız." , Toast.LENGTH_LONG).show();
 
-                    Snackbar.make(v, "Şu an " + largestKey + " 'dasınız.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    Snackbar.make(v, "Şu an " + encokKey + " 'dasınız.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                         for(int i=1; i<oklit_dizi.length;i++){
-                        if(largestKey.equals(oklit_dizi[i][2])){
+                        if(encokKey.equals(oklit_dizi[i][2])){
                             Button b = (Button)findViewById(Integer.parseInt(oklit_dizi[i][1]));
                             Drawable d = getResources().getDrawable(R.drawable.button_konum_bul);
                             //b.setBackgroundColor(b.getContext().getResources().getColor(R.color.green_konum));

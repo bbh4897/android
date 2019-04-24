@@ -192,7 +192,7 @@ public class ActivityKonumDetay extends AppCompatActivity {
 
 
                 int count=1;
-                oklit_dizi = new String[70][3];
+                oklit_dizi = new String[500][3];
 
                 int oklit=0;
                 for(int a=0; a<anlik_dizi.length;a++){

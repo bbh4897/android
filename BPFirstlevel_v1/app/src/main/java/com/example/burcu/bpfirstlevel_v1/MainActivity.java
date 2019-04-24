@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
+TextView textView;
 
 
     @Override
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        ***************************************************************************************************************
 //        fLOATING ACTION BAR KISMINA TIKLANILDIGINDA NELER OLACAGI
+
+        textView = (TextView)findViewById(R.id.text_konum_bilgi);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

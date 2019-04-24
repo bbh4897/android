@@ -35,10 +35,10 @@ import java.util.ArrayList;
 public class RecordList extends AppCompatActivity {
     ListView listView;
     Button btn2;
-
     ArrayList<Model> mList;
     KonumListAdapter adapter = null;
     Model model;
+    public static Veritabani veritabani;
 
     ImageView imgIcon;
     byte[] img;
@@ -55,7 +55,7 @@ public class RecordList extends AppCompatActivity {
         adapter = new KonumListAdapter(this, R.layout.row, mList);
         listView.setAdapter(adapter);
 
-
+        veritabani = new Veritabani(this, "Bitirmedb.sqlite", null, 1 );
 
         Cursor cursor = Activity_KonumBilgiGiris.veritabani.getData("SELECT * FROM KONUMBILGILERI");
         mList.clear();
@@ -114,6 +114,7 @@ public class RecordList extends AppCompatActivity {
                             while (c.moveToNext()){
                                 arrId.add(c.getInt(0));
                             }
+
                             showDialogDelete(arrId.get(position));
 
                         }
@@ -132,13 +133,13 @@ public class RecordList extends AppCompatActivity {
         AlertDialog.Builder dialogDelete = new AlertDialog.Builder(RecordList.this);
         dialogDelete.setTitle("Uyarı!");
         dialogDelete.setMessage("Silmek İstediğinizden Emin misiniz?");
+
         dialogDelete.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try{
                     Activity_KonumBilgiGiris.veritabani.deleteData(idRecord);
                     Toast.makeText(RecordList.this, "Silindi", Toast.LENGTH_LONG).show();
-
                 }catch (Exception e){
                     Log.e("Error", e.getMessage());
                 }

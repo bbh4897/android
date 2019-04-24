@@ -1,4 +1,15 @@
 <resources>
-    <string name="app_name">BPFirstlevel_v1</string>
+    <string name="app_name">VIM</string>
     <string name="action_settings">Ayarlar</string>
+    <string name="uygulama_bilgi" >
+
+       <b>-</b> Yeni bir konum ekle. \n \n
+       <b>-</b> İlgili konumun detay sayfasına git. \n \n
+       <b>-</b> Konum planına uygun olan hedef konuma ait butonlara bas ve wifi izlerini kayıt et. \n \n
+       <b>-</b> Her hedef konum için toplanan wifi izleri bir turu ifade etmektedir. \n \n
+       <b>-</b> Bir tur tamamlamak için bitir butonuna bas ve bir diğer hedefkonum için wifi izleri toplamaya devam et. \n \n
+       <b>-</b> Konumunu bulmak için \'Konum Bul\' butonuna basman yeterli. \n \n
+       <b>-</b> Cihazının konum ve Wi-Fi bağlantısının açık olduğundan emin ol!
+
+    </string>
 </resources>
